@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 module.exports = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
-  entry: resolve(__dirname, "./src/index"),
+  entry: resolve(__dirname, "./src/app"),
   devtool:
     process.env.NODE_ENV === "production"
       ? "hidden-source-map"
@@ -26,7 +26,7 @@ module.exports = {
   output: {
     filename: "[name].bundle.[chunkhash].js",
     clean: true,
-    path: resolve(__dirname, "./build"),
+    path: resolve(__dirname, "./dist"),
     environment: {
       arrowFunction: false,
     },
