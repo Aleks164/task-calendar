@@ -25,17 +25,13 @@ export const taskSlice = createSlice({
     addTask: (state, action: PayloadAction<TaskType>) => {
       state.tasks.push(action.payload);
     },
-    // dellTask(state, action: PayloadAction<number>) {
-    //   state.tasks.filter((task) => task.id !== action.payload)
-    // },
-    // upDateTask(state, action: PayloadAction<TaskType>) {
-    //   state.tasks.filter((task) => task.id !== action.payload.id);
-    //   state.tasks.push(action.payload);
-    // },
-    // filterTaskByStatus(state, action:PayloadAction<TaskType["status"]>){
-    //   let result = state.tasks.filter((task)=>task.status!==action.payload);
-    //   return result;
-    // }
+    dellTask: (state, action: PayloadAction<number>) => {
+      state.tasks.filter((task) => task.id !== action.payload)
+    },
+    upDateTask: (state, action: PayloadAction<TaskType>) => {
+      state.tasks.filter((task) => task.id !== action.payload.id);
+      state.tasks.push(action.payload);
+    }
   }
 });
 export default taskSlice.reducer;
