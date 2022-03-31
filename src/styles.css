@@ -1,3 +1,22 @@
 body {
   font-family: sans-serif;
 }
+a {
+  margin-right: 15px;
+}
+.linksBlock,
+.checkStatusBlock {
+  text-align: center;
+}
+.taskWindow {
+  display: block;
+  width: 95vw;
+  height: 100vh;
+}
+.taskList {
+  min-height: 60%;
+  border: 2px solid black;
+}
+.taskInputBlock {
+  display: block;
+}

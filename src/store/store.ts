@@ -5,10 +5,6 @@ const rootReducer = combineReducers({
   taskReducer
 });
 
-// export const setupStore = () => configureStore({
-//   reducer: rootReducer
-// });
-
 export const setupStore = configureStore({
   reducer: taskReducer
 });
