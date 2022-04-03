@@ -45,6 +45,7 @@ export function addTask(e: SubmitEvent) {
     setupStore.dispatch(taskSlice.actions.addTask(newTask()));
     inputCliner();
     allTasks.checked = true;
+    console.log(setupStore.getState())
   }
 }
 
