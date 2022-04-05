@@ -1,25 +1,3 @@
-body {
-  font-family: sans-serif;
-}
-a {
-  margin-right: 15px;
-}
-.linksBlock,
-.checkStatusBlock {
-  text-align: center;
-}
-.taskWindow {
-  display: block;
-  width: 95vw;
-  height: 100vh;
-}
-/* .taskList {
-  min-height: 60%;
-  border: 2px solid black;
-} */
-.taskInputBlock {
-  display: block;
-}
 html {
   background: linear-gradient(to bottom, #ffffff 0%, #ccffff 100%);
   height: 100%;
@@ -45,18 +23,35 @@ html {
   background: white;
   margin: 0px;
 }
-.taskInDate {
+.taskInDate { 
+/* position: relative; */
+/* height: 3vh; */
+}
+.dateInCell{
+  padding-left: 25%;
+  text-align: left;
+}
+.greenList {
   position: absolute;
-  height: 1.5vh;
-  width: 1.5vh;
-  border-radius: 50%;
-  border: 2px solid;
-  box-sizing: border-box;
+  background-image: url(image/greenList.jpg);
+  height: 3vh;
   z-index: 5;
+  width: 3vw;
+  background-size: cover;
+  top: 15%;
+    right: 15%;
 }
-.taskInDate:hover {
+.redList {
+  position: absolute;
+  background-image: url(image/redList.jpg);
+  height: 3vh;
+  z-index: 5;
+  width: 3vw;
+  background-size: cover;
+}
+/* .taskInDate:hover {
   background-color: yellow;
-}
+} */
 
 #calendarCont {
   border: 2px solid black;
@@ -106,4 +101,3 @@ table {
 table tr {
   border: 1px solid rgb(208, 199, 218);
 }
-

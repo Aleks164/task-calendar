@@ -8,7 +8,7 @@ const titleInput = <HTMLInputElement>document.querySelector(".titleInput");
 const taskInput = <HTMLInputElement>document.querySelector(".taskInput");
 const dateInput = <HTMLInputElement>document.querySelector(".dateInput");
 const taskForm = document.querySelector("form");
-const taskList = <HTMLDivElement>document.querySelector(".taskList");
+const taskList = <HTMLDivElement>document.querySelector("#calendarCont");
 const addButton = <HTMLInputElement>document.querySelector(".addButton");
 const allTasks = <HTMLInputElement>document.querySelector("#allTasks");
 
@@ -35,8 +35,9 @@ export function drawTasksList() {
 }
 
 export function addTask(e: SubmitEvent) {
+  titleInput = <HTMLInputElement>document.querySelector(".titleInput");
   e.preventDefault();
-
+console.log(document.body.innerHTML)
   if (titleInput.value === "") {
     titleInput.focus();
   } else if (taskInput.value === "") {
