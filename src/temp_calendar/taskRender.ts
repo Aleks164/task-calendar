@@ -20,36 +20,89 @@ export function taskRender() {
     const rightD = rightDateType.getDate();
     const newDate = new Date(rightY, rightM, rightD);
     const dateCheck = firstDayFull <= newDate && lastDayFull >= newDate;
+    console.log(task.title, task.status, rightD);
     if (dateCheck) {
       const changingEl = document.querySelector(`td[data-day='${rightD}']`);
       if (changingEl) {
-        let greenList = "";
-        let redList = "";
-        if (task.status === "done") {
-          greenList = `class ='greenList'`;
-        }
-        if (task.status === "in progress") {
-          redList = `class ='redList'`;
-        }
+        let greenListInner = "";
+        let redListInner = "";
+        // let isgreenListInner = document.querySelector(`.greenList`);
+        // let isredListInner = document.querySelector(`.redList`);
+        let greenListCheker = changingEl.querySelector(".greenListTasks");
+        let redListCheker = changingEl.querySelector(".redListTasks");
 
-        changingEl.innerHTML = `<div data-id="${task.id}" class="taskInDate"><div class="dateInCell">${rightD}</div><div ${greenList}></div><div class="greenListTasks"></div><div ${redList}></div></div><div class="redListTasks"></div>`;
+        if (greenListCheker) {
+          // console.log(task.title, task.status, rightD);
+          greenListInner = changingEl.querySelector(`.greenListTasks`)
+            .innerHTML;
+          // console.log(greenListInner);
+          if (task.status === "done") {
+            greenListInner += `<p>${task.title}</p>`;
+            // console.log(greenListInner);
+          }
+        }
+        if (redListCheker) {
+          redListInner = changingEl.querySelector(".redListTasks").innerHTML;
+          // console.log(redListInner);
+          if (task.status !== "done") {
+            redListInner += `<p>${task.title}</p>`;
+            // console.log(redListInner);
+          }
+        }
+        if (!greenListCheker && !redListCheker) {
+          if (task.status === "done") {
+            greenListInner += `<p>${task.title}</p>`;
+            // console.log(greenListInner);
+          }
+          if (task.status !== "done") {
+            redListInner += `<p>${task.title}</p>`;
+            // console.log(redListInner);
+          }
+        }
+        changingEl.innerHTML = `<div data-id="${task.id}" class="taskInDate"><div class="dateInCell">${rightD}</div><div class ='greenList'></div><div class="greenListTasks">${greenListInner}</div><div class ='redList'></div><div class="redListTasks">${redListInner}</div></div>`;
+        
       }
     }
   });
   document.querySelectorAll(".greenList").forEach((el) => {
     el.addEventListener("mouseover", (e) => {
-      if (e.currentTarget === e.target) {
-        const { id } = (<HTMLElement>e.target).dataset;
-        const curTask = data.find((task) => task.id === +id);
-        (<HTMLElement>(
-          e.target
-        )).innerHTML = `<div class="hoverTask"><p>${curTask.title}</p></div>`;
-      }
+      const redListEl = (<HTMLElement>(
+        (<HTMLElement>e.target).parentElement?.querySelector(`.greenListTasks`)
+      )).style;
+      
+      redListEl.display = "block";
+      redListEl.zIndex = "10";
     });
   });
   document.querySelectorAll(".greenList").forEach((el) => {
     el.addEventListener("mouseout", (e) => {
-      (<HTMLElement>e.currentTarget).firstChild.remove();
+      const redListEl = (<HTMLElement>(
+        (<HTMLElement>e.target).parentElement?.querySelector(`.greenListTasks`)
+      )).style;
+      
+      redListEl.display = "none";
+      redListEl.zIndex = "5";
     });
   });
+  document.querySelectorAll(".redList").forEach((el) => {
+    el.addEventListener("mouseover", (e) => {
+      const redListEl = (<HTMLElement>(
+        (<HTMLElement>e.target).parentElement?.querySelector(`.redListTasks`)
+      )).style;
+      
+      redListEl.display = "block";
+      redListEl.zIndex = "10";
+    });
+  });
+  document.querySelectorAll(".redList").forEach((el) => {
+    el.addEventListener("mouseout", (e) => {
+      const redListEl = (<HTMLElement>(
+        (<HTMLElement>e.target).parentElement?.querySelector(`.redListTasks`)
+      )).style;
+      
+      redListEl.display = "none";
+      redListEl.zIndex = "5";
+    });
+  });
+  
 }

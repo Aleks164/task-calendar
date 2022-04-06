@@ -8,26 +8,7 @@ html {
   text-align: center;
   height: 60vh;
 }
-.hoverTask {
-  position: relative;
-}
-.hoverTask p {
-  top: -1vw;
-  left: 3vw;
-  padding: 0px;
-  position: absolute;
-  width: max-content;
-  height: 4vh;
-  border: 1px solid;
-  font-size: 2.5vw;
-  background: white;
-  margin: 0px;
-}
-.taskInDate { 
-/* position: relative; */
-/* height: 3vh; */
-}
-.dateInCell{
+.dateInCell {
   padding-left: 25%;
   text-align: left;
 }
@@ -39,7 +20,7 @@ html {
   width: 3vw;
   background-size: cover;
   top: 15%;
-    right: 15%;
+  right: 15%;
 }
 .redList {
   position: absolute;
@@ -48,11 +29,39 @@ html {
   z-index: 5;
   width: 3vw;
   background-size: cover;
+  bottom: 15%;
+  right: 15%;
 }
-/* .taskInDate:hover {
-  background-color: yellow;
-} */
-
+.greenListTasks {
+  font-size: 3vh;
+    border: 1px solid black;
+    background-color: #c7fcbad6;
+    border-radius: 25% 10%;
+    text-decoration: underline;
+    position: absolute;
+    display: none;
+    right: -18vw;    
+    top: 4vh;
+    z-index: 5;
+    line-height: 2vh;
+}
+.redListTasks {
+  font-size: 3vh;
+    border: 1px solid black;
+    background-color: #e9c2ced6;
+    border-radius: 25% 10%;
+    text-decoration: underline;
+    position: absolute;
+    display: none;
+    right: -18vw;    
+    top: 6vh;
+    z-index: 5;
+    line-height: 2vh;
+}
+.redListTasks p, .greenListTasks p{
+text-align: left;
+padding-left: 6vh;
+}
 #calendarCont {
   border: 2px solid black;
   width: 80vw;
