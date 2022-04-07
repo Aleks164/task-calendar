@@ -34,33 +34,35 @@ html {
 }
 .greenListTasks {
   font-size: 3vh;
-    border: 1px solid black;
-    background-color: #c7fcbad6;
-    border-radius: 25% 10%;
-    text-decoration: underline;
-    position: absolute;
-    display: none;
-    right: -18vw;    
-    top: 4vh;
-    z-index: 5;
-    line-height: 2vh;
+  border: 1px solid black;
+  background-color: #c7fcbad6;
+  border-radius: 25% 10%;
+  text-decoration: underline;
+  position: absolute;
+  display: none;
+  right: -18vw;
+  top: 4vh;
+  z-index: 5;
+  line-height: 3vh;
 }
 .redListTasks {
   font-size: 3vh;
-    border: 1px solid black;
-    background-color: #e9c2ced6;
-    border-radius: 25% 10%;
-    text-decoration: underline;
-    position: absolute;
-    display: none;
-    right: -18vw;    
-    top: 6vh;
-    z-index: 5;
-    line-height: 2vh;
+  border: 1px solid black;
+  background-color: #e9c2ced6;
+  border-radius: 25% 10%;
+  text-decoration: underline;
+  position: absolute;
+  display: none;
+  right: -18vw;
+  top: 9vh;
+  z-index: 5;
+  line-height: 3vh;
 }
-.redListTasks p, .greenListTasks p{
-text-align: left;
-padding-left: 6vh;
+.redListTasks p,
+.greenListTasks p {
+  text-align: left;
+  padding-right: 3vh;
+  padding-left: 3vh;
 }
 #calendarCont {
   border: 2px solid black;

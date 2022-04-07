@@ -12,7 +12,8 @@ export function taskRender() {
   const lastDay = new Date(+year, month + 1, 0).getDate(); // крайний день месяца (число (31,30...))
   const lastDayFull = new Date(+year, month, lastDay); // полная дата последнего дня месяца
   const firstDayFull = new Date(+year, month, 1); // полная дата первого дня месяца
-
+  let tasksAcc = {};
+  let taskItem = {progress:[],done:[]};
   data.forEach((task) => {
     const rightDateType = new Date(task.date.replace(/-/g, ","));
     const rightM = rightDateType.getMonth();
@@ -20,56 +21,61 @@ export function taskRender() {
     const rightD = rightDateType.getDate();
     const newDate = new Date(rightY, rightM, rightD);
     const dateCheck = firstDayFull <= newDate && lastDayFull >= newDate;
-    console.log(task.title, task.status, rightD);
     if (dateCheck) {
-      const changingEl = document.querySelector(`td[data-day='${rightD}']`);
-      if (changingEl) {
-        let greenListInner = "";
-        let redListInner = "";
-        // let isgreenListInner = document.querySelector(`.greenList`);
-        // let isredListInner = document.querySelector(`.redList`);
-        let greenListCheker = changingEl.querySelector(".greenListTasks");
-        let redListCheker = changingEl.querySelector(".redListTasks");
+      // console.log("status", task.title, task.status, tasksAcc);
+      if (tasksAcc[rightD] && task.status === "done") {
+        // console.log("status2", tasksAcc[rightD]);
+        if (tasksAcc[rightD].done) {
+          // console.log("status3", task.title, task.status, tasksAcc);
+          tasksAcc[rightD].done.push(task.title);
+        } else {
+          tasksAcc[rightD].done = [task.title]
+          // console.log("status4", task.title, task.status, tasksAcc);
+        }
+      } else if (!tasksAcc[rightD] && task.status === "done") {
+      let temp = Object.assign({}, taskItem);
+      temp.done.push(task.title);
+        tasksAcc[rightD] = temp;
+        // console.log("chekc", tasksAcc);
+      }
 
-        if (greenListCheker) {
-          // console.log(task.title, task.status, rightD);
-          greenListInner = changingEl.querySelector(`.greenListTasks`)
-            .innerHTML;
-          // console.log(greenListInner);
-          if (task.status === "done") {
-            greenListInner += `<p>${task.title}</p>`;
-            // console.log(greenListInner);
-          }
+      if (tasksAcc[rightD] && task.status !== "done") {
+        // console.log("progress", task.title, task.status);
+        if (tasksAcc[rightD].progress) {
+          tasksAcc[rightD].progress.push(task.title);
+        }else {         
+          tasksAcc[rightD].progress = [task.title];
         }
-        if (redListCheker) {
-          redListInner = changingEl.querySelector(".redListTasks").innerHTML;
-          // console.log(redListInner);
-          if (task.status !== "done") {
-            redListInner += `<p>${task.title}</p>`;
-            // console.log(redListInner);
-          }
-        }
-        if (!greenListCheker && !redListCheker) {
-          if (task.status === "done") {
-            greenListInner += `<p>${task.title}</p>`;
-            // console.log(greenListInner);
-          }
-          if (task.status !== "done") {
-            redListInner += `<p>${task.title}</p>`;
-            // console.log(redListInner);
-          }
-        }
-        changingEl.innerHTML = `<div data-id="${task.id}" class="taskInDate"><div class="dateInCell">${rightD}</div><div class ='greenList'></div><div class="greenListTasks">${greenListInner}</div><div class ='redList'></div><div class="redListTasks">${redListInner}</div></div>`;
-        
+      } else if (!tasksAcc[rightD] && task.status !== "done") {
+        tasksAcc[rightD] = { progress: [task.title] };
       }
     }
   });
+
+  const dateElList = document.querySelectorAll(`td[data-day]`);
+  console.log("chekasdc", tasksAcc);
+  dateElList.forEach((date: HTMLElement) => {
+    const curDay = date.dataset.day;
+    if (tasksAcc[curDay]) {
+      const greenListInner = tasksAcc[`done_${curDay}`]
+        .map((el) => `<li>${el}</li>`)
+        .join(" ");
+      const redListInner = tasksAcc[`progress_${curDay}`]
+        .map((el) => `<li>${el}</li>`)
+        .join(" ");
+      console.log(date.innerHTML);
+      date.innerHTML = `<div data-id="${curDay}" class="taskInDate"><div class="dateInCell">${curDay}</div><div class ='greenList'></div><div class="greenListTasks"><ol>${greenListInner}</ol></div><div class ='redList'></div><div class="redListTasks"><ol>${redListInner}</ol></div></div>`;
+      console.log(date.innerHTML);
+      console.log("----");
+    }
+  });
+
   document.querySelectorAll(".greenList").forEach((el) => {
     el.addEventListener("mouseover", (e) => {
       const redListEl = (<HTMLElement>(
         (<HTMLElement>e.target).parentElement?.querySelector(`.greenListTasks`)
       )).style;
-      
+
       redListEl.display = "block";
       redListEl.zIndex = "10";
     });
@@ -79,7 +85,7 @@ export function taskRender() {
       const redListEl = (<HTMLElement>(
         (<HTMLElement>e.target).parentElement?.querySelector(`.greenListTasks`)
       )).style;
-      
+
       redListEl.display = "none";
       redListEl.zIndex = "5";
     });
@@ -89,7 +95,7 @@ export function taskRender() {
       const redListEl = (<HTMLElement>(
         (<HTMLElement>e.target).parentElement?.querySelector(`.redListTasks`)
       )).style;
-      
+
       redListEl.display = "block";
       redListEl.zIndex = "10";
     });
@@ -99,10 +105,9 @@ export function taskRender() {
       const redListEl = (<HTMLElement>(
         (<HTMLElement>e.target).parentElement?.querySelector(`.redListTasks`)
       )).style;
-      
+
       redListEl.display = "none";
       redListEl.zIndex = "5";
     });
   });
-  
 }
