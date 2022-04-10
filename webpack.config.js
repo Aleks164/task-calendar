@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 module.exports = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
-  entry: resolve(__dirname, "./src/temp_calendar/index"),
+  entry: resolve(__dirname, "./src/taskCreator/index"),
   devtool:
     process.env.NODE_ENV === "production"
       ? "hidden-source-map"
@@ -89,7 +89,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, "./src/temp_calendar/index.html"),
+      template: resolve(__dirname, "./src/index.html"),
     }),
     ...(isDev
       ? [new MiniCssExtractPlugin()]

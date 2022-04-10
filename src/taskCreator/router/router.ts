@@ -1,26 +1,26 @@
 /* eslint-disable no-unused-expressions */
-
-type Config = {
-  apiHashOn: boolean;
-};
-type Args = {
+export type Args = {
   state: unknown;
   currentPath: string;
   previousPath: string;
+};
+
+type Config = {
+  apiHashOn: boolean;
 };
 
 type MatchFunction = (path: string) => void;
 
 type Match = RegExp | MatchFunction | string;
 
-export type SecondCallRenderFunc = (...args: Args[]) => Promise<unknown>;
+export type SecondCallRenderFunc = (...args: Args[]) => Promise<unknown> | void;
 
 type Listener = {
   id: number;
   match: Match;
-  onEnter: SecondCallRenderFunc|undefined;
-  onLeave: SecondCallRenderFunc|undefined;
-  onBeforeEnter: SecondCallRenderFunc|undefined;
+  onEnter?: SecondCallRenderFunc;
+  onLeave?: SecondCallRenderFunc;
+  onBeforeEnter?: SecondCallRenderFunc;
 };
 
 export function Router(config?: Config) {
@@ -37,7 +37,7 @@ export function Router(config?: Config) {
     match,
     onEnter,
     onLeave,
-    onBeforeEnter,
+    onBeforeEnter
   }: Listener) => {
     const args = { currentPath, previousPath, state: history.state };
     if (currentPath !== previousPath || args.state === null) {

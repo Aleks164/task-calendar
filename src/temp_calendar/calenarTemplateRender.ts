@@ -55,7 +55,8 @@ export function calenarTemplateRender(id: string, year: number, month: number) {
       calendar += "<tr>";
     }
   }
-  document.querySelector(`#${id} tbody`).innerHTML = calendar;
+  const calendarField = document.querySelector(`#${id} tbody`)
+  if(calendarField) calendarField.innerHTML = calendar;  
   yearInput.value = `${D.getFullYear()}`;
   monthInput.selected = true;
   (<HTMLOptionElement>(

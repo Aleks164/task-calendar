@@ -3,13 +3,13 @@ import { calenarTemplateRender } from "./calenarTemplateRender";
 
 export function calendarLoader() {
   calenarTemplateRender(
-    "calendar3",
+    "calendarField",
     new Date().getFullYear(),
     new Date().getMonth()
   );
-  document.querySelector("#calendarCont").addEventListener("click", () => {
+  document.querySelector("#inputLine")?.addEventListener("change", () => {
     calenarTemplateRender(
-      "calendar3",
+      "calendarField",
       +(<HTMLInputElement>document.querySelector("#calendarCont input")).value,
       +(<HTMLSelectElement>document.querySelector("#calendarCont select"))
         .options[

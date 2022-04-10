@@ -3,7 +3,6 @@ import "./index.css";
 
 export function calendarRender() {
   const calendarCont = <HTMLDivElement>document.querySelector("#calendarCont");
-
   calendarCont.innerHTML = `<div  id="inputLine">
   <select>
     <option value="0">Январь</option>
@@ -22,7 +21,7 @@ export function calendarRender() {
     <input type="number" value="" min="0" max="9999" size="4">
 </div>
 
-<table id="calendar3">
+<table id="calendarField">
     <thead>
       <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
      <thead>          
@@ -30,4 +29,4 @@ export function calendarRender() {
   </table>`;
   calendarLoader();
 }
-calendarRender();
+

@@ -3,14 +3,27 @@ import { setupStore } from "./store/store";
 import { drawToDoList } from "./drawToDoList";
 import { TaskType } from "./types/taskType";
 import { curDate } from "./curDate";
+import {Crud} from "../FB/CRUD"
 
-const titleInput = <HTMLInputElement>document.querySelector(".titleInput");
-const taskInput = <HTMLInputElement>document.querySelector(".taskInput");
-const dateInput = <HTMLInputElement>document.querySelector(".dateInput");
-const taskForm = document.querySelector("form");
-const taskList = <HTMLDivElement>document.querySelector("#calendarCont");
-const addButton = <HTMLInputElement>document.querySelector(".addButton");
-const allTasks = <HTMLInputElement>document.querySelector("#allTasks");
+let titleInput: HTMLInputElement;
+let taskInput: HTMLInputElement;
+let dateInput: HTMLInputElement;
+let taskForm: HTMLFormElement;
+let taskList: HTMLDivElement;
+let addButton: HTMLInputElement;
+let allTasks: HTMLInputElement;
+
+const fb = new Crud();
+
+function upDateLinks() {
+  titleInput = <HTMLInputElement>document.querySelector(".titleInput");
+  taskInput = <HTMLInputElement>document.querySelector(".taskInput");
+  dateInput = <HTMLInputElement>document.querySelector(".dateInput");
+  taskForm = <HTMLFormElement>document.querySelector("form");
+  taskList = <HTMLInputElement>document.querySelector(".taskList");
+  addButton = <HTMLInputElement>document.querySelector(".addButton");
+  allTasks = <HTMLInputElement>document.querySelector("#allTasks");
+}
 
 const newTask: (id?: number) => TaskType = (id?: number) => ({
   id: id || Date.now(),
@@ -31,13 +44,14 @@ export function getTaskList() {
 }
 
 export function drawTasksList() {
+  console.log(fb.getData())
+  upDateLinks();
   drawToDoList(taskList, getTaskList());
 }
 
-export function addTask(e: SubmitEvent) {
-  titleInput = <HTMLInputElement>document.querySelector(".titleInput");
+export function addTask(e: SubmitEvent) { 
   e.preventDefault();
-console.log(document.body.innerHTML)
+
   if (titleInput.value === "") {
     titleInput.focus();
   } else if (taskInput.value === "") {
@@ -46,7 +60,6 @@ console.log(document.body.innerHTML)
     setupStore.dispatch(taskSlice.actions.addTask(newTask()));
     inputCliner();
     allTasks.checked = true;
-    console.log(setupStore.getState())
   }
 }
 
