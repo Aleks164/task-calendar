@@ -43,8 +43,7 @@ export function getTaskList() {
   return setupStore.getState();
 }
 
-export function drawTasksList() {
-  console.log(fb.getData())
+export async function drawTasksList() {
   upDateLinks();
   drawToDoList(taskList, getTaskList());
 }
@@ -58,8 +57,9 @@ export function addTask(e: SubmitEvent) {
     taskInput.focus();
   } else {
     setupStore.dispatch(taskSlice.actions.addTask(newTask()));
+    fb.createData(newTask());
     inputCliner();
-    allTasks.checked = true;
+    allTasks.checked = true;    
   }
 }
 
@@ -67,6 +67,7 @@ export function deleteTask(id: number) {
   setupStore.dispatch(taskSlice.actions.dellTask(id));
   inputCliner();
   allTasks.checked = true;
+  fb.deleteData(id);
 }
 
 export function updateTask(id: number) {
@@ -74,7 +75,7 @@ export function updateTask(id: number) {
     e.preventDefault();
 
     setupStore.dispatch(taskSlice.actions.upDateTask(newTask(id)));
-
+    fb.updateData(newTask(id));
     taskForm?.removeEventListener("submit", addUpdatedTask);
     taskForm?.addEventListener("submit", addTask);
     addButton.style.backgroundColor = "";
@@ -100,4 +101,15 @@ export function updateTask(id: number) {
   taskForm?.removeEventListener("submit", addTask);
 
   taskForm?.addEventListener("submit", addUpdatedTask);
+}
+export function tugleStatusTask(id: number) {
+  const taskElList = setupStore.getState();
+  const tugleStatusEl = taskElList.tasks.find((el) => el.id === id);
+  const toglStatus = tugleStatusEl?.status === "done" ? "in progress" : "done";
+
+  const updatedTask = { ...tugleStatusEl, status: toglStatus } as TaskType;
+
+  setupStore.dispatch(taskSlice.actions.upDateTask(updatedTask));
+  fb.updateData(updatedTask);
+  inputCliner();
 }

@@ -51,6 +51,11 @@ export function renderTasks() {
   </form>
 </div>
 <hr />
+<div id="fuzzy">
+<label id="fuzzyLable" for="fuzzyInput">fuzzy</label
+  ><input placeholder="fuzzy" id="fuzzyInput" type="text" />
+</div>
+<hr />
 <div class="taskList"></div>`;
 
   app();

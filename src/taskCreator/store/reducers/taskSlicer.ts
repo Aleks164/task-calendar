@@ -1,16 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TaskType, TaskState } from "../../types/taskType";
 
+
 const initialState: TaskState = {
-  tasks: [
-    {
-      id: 1,
-      title: "ToDo Tasklist",
-      description: "Tasklist done",
-      date: "2022-03-31",
-      status: "done"
-    }
-  ],
+  tasks: [],
   isLoading: false,
   error: ""
 };
@@ -35,6 +28,10 @@ export const taskSlice = createSlice({
       state.tasks = state.tasks.filter((task) => task.id !== action.payload.id);
       state.tasks.push(action.payload);
       state.tasks = state.tasks.sort((a, b) => a.id - b.id);
+    },
+    dateFromFBisLoaded: (state,action: PayloadAction<TaskType[]>) => {
+      state.tasks = action.payload;
+      state.isLoading =true;
     },
   }
 });

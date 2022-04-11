@@ -1,19 +1,19 @@
 /* eslint-disable class-methods-use-this */
 import { database } from "./memory/initialFB";
-import { Baloons } from "./memory/baloons";
+import {TaskType } from "../taskCreator/types/taskType";
 
 export interface CRUDType {
-  getData(id: number): Promise<Baloons | string>;
+  getData(id: number): Promise<TaskType | string>;
 
-  createData(creatingObject: Baloons): Promise<string>;
+  createData(creatingObject: TaskType): Promise<string>;
 
   deleteData(id: number): Promise<string>;
 
-  updateData(updatingObject: Baloons): Promise<string>;
+  updateData(updatingObject: TaskType): Promise<string>;
 }
 
 export class Crud implements CRUDType {
-  async getData(id?: number): Promise<Baloons | string> {
+  async getData(id?: number): Promise<TaskType | string> {
     const dbref = database.ref(database.db);
     return database
       .get(database.child(dbref, `tasks/`))
@@ -28,7 +28,7 @@ export class Crud implements CRUDType {
       });
   }
 
-  async createData(creatingObject: Baloons): Promise<string> {
+  async createData(creatingObject: TaskType): Promise<string> {
     return database
       .set(
         database.ref(database.db, `tasks/${creatingObject.id}`),
@@ -53,7 +53,7 @@ export class Crud implements CRUDType {
       });
   }
 
-  async updateData(updatingObject: Baloons): Promise<string> {
+  async updateData(updatingObject: TaskType): Promise<string> {
     return database
       .update(
         database.ref(database.db, `tasks/${updatingObject.id}`),

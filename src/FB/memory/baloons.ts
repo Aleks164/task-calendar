@@ -1,30 +1,19 @@
-export interface regularItem {
-  color: string;
-  status: string;
-  tags: string[];
-}
-export interface regularItemWithDate extends regularItem {
-  date: number;
-}
-
-export interface Baloons extends regularItemWithDate {
-  id: number;
-}
+import {TaskType } from "../../taskCreator/types/taskType";
 
 export interface CRUDType {
-  create(newEl: regularItem): Promise<Baloons>;
+  create(newEl: TaskType): Promise<TaskType>;
 
-  getItemById(id: number): Promise<Baloons | null>;
+  getItemById(id: number): Promise<TaskType | null>;
 
-  getItemByColor(color: string): Promise<Baloons[]>;
+  getItemByColor(color: string): Promise<TaskType[]>;
 
-  getItemByDate(date: number): Promise<Baloons | null>;
+  getItemByDate(date: number): Promise<TaskType | null>;
 
-  getItemByStatus(Status: string): Promise<Baloons[]>;
+  getItemByStatus(Status: string): Promise<TaskType[]>;
 
-  getItemByTags(Tags: string[]): Promise<Baloons[]>;
+  getItemByTags(Tags: string[]): Promise<TaskType[]>;
 
-  update(id: number, elForUpdate: regularItem): Promise<Baloons | null>;
+  update(id: number, elForUpdate: TaskType): Promise<TaskType | null>;
 
   delete(id: number): Promise<void | null>;
 }
