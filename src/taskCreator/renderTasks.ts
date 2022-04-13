@@ -52,8 +52,12 @@ export function renderTasks() {
 </div>
 <hr />
 <div id="fuzzy">
-<label id="fuzzyLable" for="fuzzyInput">fuzzy</label
-  ><input placeholder="fuzzy" id="fuzzyInput" type="text" />
+<select>
+<option value="title">Title</option>
+<option value="description">Task</option>
+<option value="date">Date</option>
+</select>
+<input placeholder="Search task..." id="fuzzyInput" type="text" />
 </div>
 <hr />
 <div class="taskList"></div>`;

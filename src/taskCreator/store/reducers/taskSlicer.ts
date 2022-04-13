@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TaskType, TaskState } from "../../types/taskType";
 
-
 const initialState: TaskState = {
   tasks: [],
   isLoading: false,
@@ -29,10 +28,10 @@ export const taskSlice = createSlice({
       state.tasks.push(action.payload);
       state.tasks = state.tasks.sort((a, b) => a.id - b.id);
     },
-    dateFromFBisLoaded: (state,action: PayloadAction<TaskType[]>) => {
+    dateFromFBisLoaded: (state, action: PayloadAction<TaskType[]>) => {
       state.tasks = action.payload;
-      state.isLoading =true;
-    },
+      state.isLoading = true;
+    }
   }
 });
 export default taskSlice.reducer;

@@ -3,7 +3,7 @@ import { database } from "./memory/initialFB";
 import {TaskType } from "../taskCreator/types/taskType";
 
 export interface CRUDType {
-  getData(id: number): Promise<TaskType | string>;
+  getData(id: number): Promise<TaskType[] | string>;
 
   createData(creatingObject: TaskType): Promise<string>;
 
@@ -13,7 +13,7 @@ export interface CRUDType {
 }
 
 export class Crud implements CRUDType {
-  async getData(id?: number): Promise<TaskType | string> {
+  async getData(id?: number): Promise<TaskType[] | string> {
     const dbref = database.ref(database.db);
     return database
       .get(database.child(dbref, `tasks/`))
@@ -21,7 +21,7 @@ export class Crud implements CRUDType {
         if (snapshot.exists()) {
           return snapshot.val();
         }
-        return `object with id= not found`;
+        return `some problem with request data`;
       })
       .catch((error) => {
         return error;

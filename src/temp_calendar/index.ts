@@ -1,5 +1,4 @@
 import { calendarLoader } from "./calendarLoader";
-import "./index.css";
 
 export function calendarRender() {
   const calendarCont = <HTMLDivElement>document.querySelector("#calendarCont");
@@ -18,7 +17,7 @@ export function calendarRender() {
     <option value="10">Ноябрь</option>
     <option value="11">Декабрь</option>
     </select>
-    <input type="number" value="" min="0" max="9999" size="4">
+    <input type="number" value="" min="2000" max="2100" size="4">
 </div>
 
 <table id="calendarField">
@@ -29,4 +28,3 @@ export function calendarRender() {
   </table>`;
   calendarLoader();
 }
-

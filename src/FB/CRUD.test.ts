@@ -3,29 +3,29 @@ import { database } from "./memory/initialFB";
 
 type db = {
   offline: () => void;
-}
+};
 
-describe("CRUD", () => {
+describe.skip("CRUD", () => {
   const red = {
     id: 1,
     color: "Red",
     date: 1643700032155,
     status: "sold",
-    tags: ["small", "painted"],
+    tags: ["small", "painted"]
   };
   const black = {
     id: 2,
     color: "Black",
     date: 1643700032155,
     status: "sold",
-    tags: ["small", "painted"],
+    tags: ["small", "painted"]
   };
   let testCrud: CRUDType;
   beforeEach(() => {
     testCrud = new Crud();
   });
   afterAll(() => {
-    (database as unknown as db).offline();
+    ((database as unknown) as db).offline();
   });
   it("should Get expected Item by color", async () => {
     expect(await testCrud.createData(red)).toBe(red); // dell
