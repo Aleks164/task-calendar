@@ -7,9 +7,9 @@ jest.mock("./store/store", () => ({
       description: "test descripton",
       id: 1649766206618,
       status: "in progress",
-      title: "test title"
-    })
-  }
+      title: "test title",
+    }),
+  },
 }));
 let el: HTMLDivElement;
 let taskList: HTMLDivElement;

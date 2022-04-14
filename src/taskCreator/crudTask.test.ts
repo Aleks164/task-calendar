@@ -3,5 +3,5 @@ import {
   deleteTask,
   updateTask,
   drawTasksList,
-  tugleStatusTask
+  tugleStatusTask,
 } from "./crudTask";

@@ -3,7 +3,7 @@ import { setupStore } from "./store/store";
 import { drawToDoList } from "./drawToDoList";
 import { TaskType } from "./types/taskType";
 import { curDate } from "./curDate";
-import {Crud} from "../FB/CRUD"
+import { Crud } from "../FB/CRUD";
 
 let titleInput: HTMLInputElement;
 let taskInput: HTMLInputElement;
@@ -30,7 +30,7 @@ const newTask: (id?: number) => TaskType = (id?: number) => ({
   title: titleInput.value,
   description: taskInput.value,
   date: dateInput.value,
-  status: "in progress"
+  status: "in progress",
 });
 
 export function inputCliner() {
@@ -48,7 +48,8 @@ export async function drawTasksList() {
   drawToDoList(taskList, getTaskList());
 }
 
-export function addTask(e: SubmitEvent) { 
+export function addTask(e: SubmitEvent) {
+  upDateLinks();
   e.preventDefault();
 
   if (titleInput.value === "") {
@@ -59,7 +60,7 @@ export function addTask(e: SubmitEvent) {
     setupStore.dispatch(taskSlice.actions.addTask(newTask()));
     fb.createData(newTask());
     inputCliner();
-    allTasks.checked = true;    
+    allTasks.checked = true;
   }
 }
 

@@ -1,20 +1,24 @@
 html {
-  background: linear-gradient(to bottom, #ffffff 1%, #ccffff 20%);
+  background: linear-gradient(to bottom, #fff 1%, #cff 20%);
   min-width: 390px;
   max-width: 80vw;
   margin-left: auto;
   margin-right: auto;
+  background-attachment: fixed;
 }
+
 #calendarField {
   width: 100%;
   line-height: 1.2em;
   text-align: center;
-  height: 60vh;
+  height: 70vh;
 }
+
 .dateInCell {
   padding-left: 25%;
   text-align: left;
 }
+
 .greenList,
 .redList {
   position: absolute;
@@ -25,140 +29,172 @@ html {
   background-size: contain;
   right: 15%;
 }
+
 .greenList {
-  background-image: url(temp_calendar/image/greenList.png);
+  background-image: url("temp_calendar/image/greenList.png");
   top: 5%;
 }
+
 .redList {
-  background-image: url(temp_calendar/image/redList.png);
+  background-image: url("temp_calendar/image/redList.png");
   bottom: 2%;
 }
+
 .greenListTasks {
   font-size: 3vh;
   position: absolute;
+  right: 5vw;
+  top: 0;
   display: none;
-  right: -10vw;
-  top: 6vh;
   border-top: 10px;
+  border-top-style: none;
+  border-top-color: currentcolor;
   z-index: 5;
-  padding-right: 30px;
+  padding-right: 15px;
   border-top-style: inset;
   border-right-style: dashed;
-  border-radius: 42px 0px 83px 59px / 41px 0px 91px 57px;
+  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
   animation-duration: 1s;
   animation-name: slidein;
   background-color: rgb(174 255 174);
   border-top-color: rgb(126 181 126);
   box-shadow: -8px 8px 5px rgb(128 161 103);
-  /* width: 25vw; */
+  width: 30vw;
   padding-left: 15px;
+  word-wrap: break-word;
 }
+
 .redListTasks {
+  word-wrap: break-word;
   padding-left: 15px;
-  /* width: 25vw; */
+  width: 30vw;
   font-size: 3vh;
   position: absolute;
   display: none;
-  right: -10vw;
-  top: 10vh;
+  right: 5vw;
+  top: 8vh;
   z-index: 5;
-  padding-right: 30px;
+  padding-right: 15px;
   border-top: 10px;
   border-top-style: inset;
   border-right-style: dashed;
-  border-radius: 42px 0px 83px 59px / 41px 0px 91px 57px;
+  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
   animation-duration: 1s;
   animation-name: slidein;
   background-color: rgb(255 191 191);
   border-top-color: rgb(243 39 58);
   box-shadow: -8px 8px 5px rgb(161 103 103);
 }
+
 .redListTasks ol,
 .greenListTasks ol {
   line-height: 1.5;
   text-align: initial;
   padding-right: 5px;
   padding-left: 20px;
-  color: rgb(44, 86, 122);
+  color: rgb(44 86 122);
   text-decoration: underline;
 }
+
 #calendarCont {
-  border-radius: 3%;
+  border-radius: 15px;
   border: 2px solid black;
   padding-top: 15px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 1px 4px rgb(0 0 0 / 30%), -23px 0 20px -23px rgb(0 0 0 / 80%),
-    23px 0 20px -23px rgb(0 0 0 / 80%), 0 0 40px rgb(0 0 0 / 10%) inset;
+  box-shadow:
+    0 1px 4px rgb(0 0 0 / 30%),
+    -23px 0 20px -23px rgb(0 0 0 / 80%),
+    23px 0 20px -23px rgb(0 0 0 / 80%),
+    0 0 40px rgb(0 0 0 / 10%) inset;
 }
+
 #inputLine {
-  width: 165px;
+  width: 220px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 15px;
 }
+
 #inputLine select {
-  width: 80px;
-  text-align: center;
+  font-size: 2vh;
+  height: 3vh;
+  width: 110px;
+  text-align: left;
   box-shadow: -2px 3px 5px 1px rgb(131 233 249);
   border: #f59097;
   border-radius: 52px 64px 144px 52px / 52px 50px 150px 52px;
 }
+
 #inputLine input,
 #fuzzy select {
-  text-align: end;
   box-shadow: 2px 3px 5px 1px rgb(131 233 249);
   border: #f59097;
   border-radius: 58px 52px 52px 164px / 75px 52px 52px 150px;
 }
+
 #inputLine input {
-  width: 75px;
+  text-align: end;
+  font-size: 2vh;
+  height: 3vh;
+  width: 100px;
 }
+
 #fuzzy {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: max-content;
 }
+
 #fuzzyInput {
   width: 100px;
   display: inline-block;
   box-shadow: 2px 3px 5px 1px rgb(131 233 249);
   border: #f59097;
-  border-radius: 0.5em 0.5em 1em 0em / 0.5em 0.5em 2em 2em;
+  border-radius: 0.5em 0.5em 1em 0 / 0.5em 0.5em 2em 2em;
   text-align: left;
 }
+
 #fuzzy select {
   width: 100px;
 }
+
 #calendarField thead tr:last-child {
   font-size: small;
-  color: rgb(85, 85, 85);
+  color: rgb(85 85 85);
 }
+
 #calendarField tbody td {
-  color: rgb(44, 86, 122);
+  color: rgb(44 86 122);
   position: relative;
 }
+
 #calendarField tbody td:nth-child(n + 6),
 #calendarField .holiday {
-  color: rgb(231, 140, 92);
+  color: rgb(231 140 92);
 }
+
 #calendarField tbody td.today {
   outline: 3px solid red;
 }
+
 tbody td:nth-child(-n + 6) {
-  border-right: 1px solid rgb(208, 199, 218);
+  border-right: 1px solid rgb(208 199 218);
 }
+
 table {
   border-collapse: collapse;
 }
+
 table tr {
-  border: 1px solid rgb(208, 199, 218);
+  border: 1px solid rgb(208 199 218);
 }
 
 a {
   margin-right: 15px;
 }
+
 .linksBlock,
 #checkStatusBlock {
   text-align: center;
@@ -166,47 +202,51 @@ a {
   margin-right: auto;
   width: 350px;
 }
+
 .taskWindow {
   display: block;
   width: 95vw;
 }
+
 .titleLable {
   grid-area: titleLable;
   margin-left: 5px;
 }
+
 .taskLable {
   grid-area: taskLable;
   margin-left: 5px;
 }
+
 .dateLable {
   grid-area: dateLable;
   margin-left: 5px;
 }
+
 .titleInput {
   margin-bottom: 5px;
   grid-area: titleInput;
   box-shadow: 2px 3px 5px 1px rgb(131 233 249);
   border: #f59097;
-  border-radius: 0.5em 0.5em 1em 0em / 0.5em 0.5em 2em 2em;
+  border-radius: 0.5em 0.5em 1em 0 / 0.5em 0.5em 2em 2em;
 }
+
 .taskInput {
   margin-bottom: 5px;
   grid-area: taskInput;
   box-shadow: 2px 3px 5px 1px rgb(131 233 249);
   border: #f59097;
-  border-radius: 0.5em 0.5em 1em 0em / 0.5em 0.5em 2em 2em;
+  border-radius: 0.5em 0.5em 1em 0 / 0.5em 0.5em 2em 2em;
 }
+
 .dateInput {
   margin-bottom: 5px;
   grid-area: dateInput;
   box-shadow: 2px 3px 5px 1px rgb(131 233 249);
   border: #f59097;
-  border-radius: 0.5em 0.5em 1em 0em / 0.5em 0.5em 2em 2em;
+  border-radius: 0.5em 0.5em 1em 0 / 0.5em 0.5em 2em 2em;
 }
-.addButton {
-  grid-area: addButton;
-  place-self: center;
-}
+
 .taskInputBlock {
   min-width: 365px;
   display: grid;
@@ -217,135 +257,159 @@ a {
     "taskLable taskInput  addButton"
     "dateLable dateInput addButton";
 }
+
 .taskList {
   min-height: 165px;
 }
+
 .loadingList {
-  background-image: url(temp_calendar/image/loading.gif);
-  position: absolute;
-  height: 30vh;
-  margin-left: 15vw;
-  margin-top: 15vh;
+  background-image: url("temp_calendar/image/loading.gif");
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 40vw;
 }
+
 .taskListItem {
   position: relative;
   border-top: 10px;
   border-top-style: inset;
   border-right-style: dashed;
-  border-radius: 42px 0px 83px 59px / 41px 0px 91px 57px;
+  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
 }
+
 .redItem {
   background-color: rgb(255 191 191);
   border-top-color: rgb(243 39 58);
   box-shadow: -8px 8px 5px rgb(161 103 103);
 }
+
 .redItem input {
   background-color: #ffcacd;
-  box-shadow: 1px 1px 0px 1px rgb(141 40 49);
+  box-shadow: 1px 1px 0 1px rgb(141 40 49);
   border: #6a0910;
   border-radius: 50%;
 }
+
 .dellBut {
   width: 21px;
   height: 21px;
 }
+
 .greenItem {
   background-color: rgb(174 255 174);
   border-top-color: rgb(126 181 126);
   box-shadow: -8px 8px 5px rgb(128 161 103);
 }
+
 .greenItem input {
-  box-shadow: 1px 1px 0px 1px rgb(32 72 34);
+  box-shadow: 1px 1px 0 1px rgb(32 72 34);
   background-color: rgb(174 255 174);
   border: greenyellow;
   border-radius: 50%;
 }
+
 .taskListItem h4,
 p {
   word-wrap: anywhere;
   margin-top: 0%;
   margin-bottom: 0%;
 }
+
 .greenItem hr {
   border-color: #139f3d;
   margin-right: 75px;
-  box-shadow: 0px 0px 5px 1px hsl(354deg 36% 36%);
+  box-shadow: 0 0 5px 1px hsl(354deg 36% 36%);
 }
+
 .redItem hr {
   border-color: #9f0e0e;
   background-color: #9f0e0e;
   margin-right: 75px;
-  box-shadow: 0px 0px 5px 1px hsl(354deg 36% 36%);
+  box-shadow: 0 0 5px 1px hsl(354deg 36% 36%);
 }
+
 .dataPInTask {
   text-align: right;
   padding-right: 20%;
   padding-top: 2%;
 }
+
 .descriptionPInTask {
   padding-left: 10px;
   padding-right: 10px;
   text-align: justify;
 }
+
 .taskListItem h4 {
   margin-right: 95px;
   padding-top: 5px;
   padding-left: 25px;
 }
+
 .del_updateBlock {
   position: absolute;
   right: 5px;
   top: 2px;
 }
+
 .del_updateBlock input {
-  padding: 0px;
+  padding: 0;
   width: 20px;
   height: 20px;
   font-size: 12px;
 }
+
 #olList > hr {
   margin-left: -40px;
 }
+
 .del_updateBlock input:hover {
-  background-color: #ccffff;
+  background-color: #cff;
 }
 
 .addButton {
   position: relative;
   display: inline-block;
   font-size: 18px;
-  color: hsl(88, 70%, 30%);
+  color: hsl(88deg 70% 30%);
   text-shadow: rgb(255 255 255 / 50%) 0 -1px 0, rgb(0 0 0 / 20%) 0 0.18em 0.15em;
   text-decoration: none;
   user-select: none;
   margin: 0.5em;
-  padding: 0.5em 0.6em 0.4em 0.6em;
+  padding: 0.5em 0.6em 0.4em;
   border-radius: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
   outline: none;
-  background: #7de3ed
-    radial-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
-  box-shadow: inset rgb(255 255 255 / 60%) 0 0.3em 0.3em,
-    inset rgb(0 0 0 / 20%) 0 -0.1em 0.3em, rgb(128 161 103) 0 7px 1px,
+  background:
+    #7de3ed
+    radial-gradient(rgb(255 255 255 / 0%), rgb(255 255 255 / 50%));
+  box-shadow:
+    inset rgb(255 255 255 / 60%) 0 0.3em 0.3em,
+    inset rgb(0 0 0 / 20%) 0 -0.1em 0.3em,
+    rgb(128 161 103) 0 7px 1px,
     rgb(0 0 0 / 20%) 0 0.5em 5px;
   transition: background 0.2s ease-in-out;
+  grid-area: addButton;
+  place-self: center;
 }
+
 .addButton:hover {
-  background-color: hsl(88, 70%, 75%);
+  background-color: hsl(88deg 70% 75%);
 }
+
 .addButton:active {
   top: 0.2em;
-  color: rgba(254, 255, 255, 0.9);
-  text-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px;
-  box-shadow: inset rgba(255, 255, 255, 0.6) 0 0.3em 0.3em,
-    inset rgba(0, 0, 0, 0.2) 0 -0.1em 0.3em, rgba(0, 0, 0, 0.4) 0 0.1em 1px,
-    rgba(0, 0, 0, 0.3) 0 0.2em 6px;
+  color: rgb(254 255 255 / 90%);
+  text-shadow: rgb(0 0 0 / 20%) 0 1px 2px;
+  box-shadow:
+    inset rgb(255 255 255 / 60%) 0 0.3em 0.3em,
+    inset rgb(0 0 0 / 20%) 0 -0.1em 0.3em,
+    rgb(0 0 0 / 40%) 0 0.1em 1px,
+    rgb(0 0 0 / 30%) 0 0.2em 6px;
 }
-.addButton:after {
+
+.addButton::after {
   content: "";
   position: absolute;
   width: 90%;
@@ -353,12 +417,14 @@ p {
   top: 0;
   left: 5%;
   border-radius: 0.5em 0.5em 1em 1em / 0.5em 0.5em 2em 2em;
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.55),
-    rgba(255, 255, 255, 0.3)
-  );
+  background-image:
+    linear-gradient(
+      rgb(255 255 255 / 55%),
+      rgb(255 255 255 / 30%)
+    );
 }
-.button:active:after {
+
+.button:active::after {
   opacity: 0.6;
 }
 
@@ -371,30 +437,91 @@ a.aAbout {
   outline: none;
   border-radius: 1px;
 }
+
 a.aCalendar:hover,
 a.aTasks:hover,
 a.aAbout:hover {
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       1px 45% at 0% 50%,
-      rgba(0, 0, 0, 0.6),
+      rgb(0 0 0 / 60%),
       transparent
     ),
-    radial-gradient(1px 45% at 100% 50%, rgba(0, 0, 0, 0.6), transparent);
+    radial-gradient(1px 45% at 100% 50%, rgb(0 0 0 / 60%), transparent);
 }
+
 a.aCalendar:active,
 a.aTasks:active,
 a.aAbout:active {
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       45% 45% at 50% 100%,
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0)
+      rgb(255 255 255 / 90%),
+      rgb(255 255 255 / 0%)
     ),
-    linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.3));
-  box-shadow: inset rgba(162, 95, 42, 0.4) 0 0 0 1px,
-    inset rgba(255, 255, 255, 0.9) 0 0 1px 3px;
+    linear-gradient(rgb(255 255 255 / 40%), rgb(255 255 255 / 30%));
+  box-shadow:
+    inset rgb(162 95 42 / 40%) 0 0 0 1px,
+    inset rgb(255 255 255 / 90%) 0 0 1px 3px;
 }
 
-@keyframes slidein {
+.redList:hover + .redListTasks {
+  display: block;
+  z-index: 10;
+}
+
+.greenList:hover + .greenListTasks {
+  display: block;
+  z-index: 10;
+}
+
+tbody td:nth-child(-n + 5) .greenListTasks {
+  font-size: 3vh;
+  position: absolute;
+  right: -33vw;
+  top: -3vh;
+  display: none;
+  border-top: 10px;
+  border-top-style: none;
+  border-top-color: currentcolor;
+  z-index: 5;
+  padding-right: 15px;
+  border-top-style: inset;
+  border-right-style: dashed;
+  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
+  animation-duration: 1s;
+  animation-name: slidein;
+  background-color: rgb(174 255 174);
+  border-top-color: rgb(126 181 126);
+  box-shadow: -8px 8px 5px rgb(128 161 103);
+  width: 30vw;
+  padding-left: 15px;
+  word-wrap: break-word;
+}
+
+tbody td:nth-child(-n + 5) .redListTasks {
+  word-wrap: break-word;
+  padding-left: 15px;
+  width: 30vw;
+  font-size: 3vh;
+  position: absolute;
+  display: none;
+  right: -33vw;
+  top: 3vh;
+  z-index: 5;
+  padding-right: 15px;
+  border-top: 10px;
+  border-top-style: inset;
+  border-right-style: dashed;
+  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
+  animation-duration: 1s;
+  animation-name: slidein;
+  background-color: rgb(255 191 191);
+  border-top-color: rgb(243 39 58);
+  box-shadow: -8px 8px 5px rgb(161 103 103);
+}
+
+/* @keyframes slidein {
   from {
     right: -5vw;
   }
@@ -402,4 +529,4 @@ a.aAbout:active {
   to {
     right: -10vw;
   }
-}
+} */

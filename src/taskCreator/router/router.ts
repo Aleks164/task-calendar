@@ -37,7 +37,7 @@ export function Router(config?: Config) {
     match,
     onEnter,
     onLeave,
-    onBeforeEnter
+    onBeforeEnter,
   }: Listener) => {
     const args = { currentPath, previousPath, state: history.state };
     if (currentPath !== previousPath || args.state === null) {

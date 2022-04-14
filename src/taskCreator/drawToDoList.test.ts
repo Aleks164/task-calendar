@@ -8,8 +8,8 @@ describe.skip("test drawToDoList", () => {
       description: "test descripton",
       id: 1649766206618,
       status: "in progress",
-      title: "test title"
-    }
+      title: "test title",
+    },
   ];
 
   let el: HTMLDivElement;
@@ -24,7 +24,7 @@ describe.skip("test drawToDoList", () => {
     const testState: TaskState = {
       tasks: testTasks,
       isLoading: false,
-      error: "error"
+      error: "error",
     };
     drawToDoList(el, testState);
     expect(el.innerHTML).toBe('<div class="loadingList"></div>');
@@ -33,7 +33,7 @@ describe.skip("test drawToDoList", () => {
     const testState: TaskState = {
       tasks: testTasks,
       isLoading: true,
-      error: "error"
+      error: "error",
     };
     let taskItem = `<ol id="olList"><li class="taskListItem redItem"><h4>test title</h4><hr><p class="descriptionPInTask">test descripton</p><p class="dataPInTask">2022.04.12</p> <div class="del_updateBlock">
         <input onclick="deleteTask(1649766206618)" class="dellBut" type="button" value="X">

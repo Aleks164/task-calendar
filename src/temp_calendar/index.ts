@@ -22,9 +22,10 @@ export function calendarRender() {
 
 <table id="calendarField">
     <thead>
-      <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+      <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс</tr>
      <thead>          
     <tbody>
-  </table>`;
+    </tbody>   
+  </table> <hr />`;
   calendarLoader();
 }

@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 module.exports = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
-  entry: resolve(__dirname, "./src/taskCreator/index"),
+  entry: resolve(__dirname, "./src/index"),
   devtool:
     process.env.NODE_ENV === "production"
       ? "hidden-source-map"

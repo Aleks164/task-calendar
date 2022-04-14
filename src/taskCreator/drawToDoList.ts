@@ -1,11 +1,9 @@
 import { TaskState } from "./types/taskType";
 
-export function drawToDoList(taskList: HTMLDivElement, curState?: TaskState) {
- 
-  if(location.pathname==="/tasks"){
+export function drawToDoList(taskList: HTMLDivElement, curState: TaskState) {
+  if (location.pathname === "/tasks") {
     if (!curState || !curState.isLoading) {
-      if(curState)console.log(curState.isLoading);      
-      taskList.innerHTML = `<div class= "loadingList"></div>`;
+      taskList.classList.add("loadingList");
     } else {
       const sortTasks = [...curState.tasks].sort(
         (a, b) => Number(b.id) - Number(a.id)
@@ -32,7 +30,7 @@ export function drawToDoList(taskList: HTMLDivElement, curState?: TaskState) {
         </div></li>${curState.tasks.length - 1 === index ? "" : "<hr/>"}`
         )
         .join("")} </ol>`;
+      taskList.classList.remove("loadingList");
     }
   }
-  
 }

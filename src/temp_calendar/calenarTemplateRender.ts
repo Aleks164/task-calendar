@@ -1,4 +1,8 @@
-export function calenarTemplateRender(id: string, year: number, month: number) {
+export function calenarTemplateRender(
+  calendarField: HTMLElement,
+  year: number,
+  month: number
+) {
   const Dlast = new Date(year, month + 1, 0).getDate(); // крайний день месяца (число (31,30...))
   const D = new Date(year, month, Dlast); // полная дата последнего дня месяца
   const DNfirst = new Date(D.getFullYear(), D.getMonth(), 1).getDay(); // день недели первого дня месяца
@@ -55,8 +59,7 @@ export function calenarTemplateRender(id: string, year: number, month: number) {
       calendar += "<tr>";
     }
   }
-  const calendarField = document.querySelector(`#${id} tbody`)
-  if(calendarField) calendarField.innerHTML = calendar;  
+  if (calendarField) calendarField.innerHTML = calendar;
   yearInput.value = `${D.getFullYear()}`;
   monthInput.selected = true;
   (<HTMLOptionElement>(

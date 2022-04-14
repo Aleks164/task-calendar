@@ -4,7 +4,7 @@ import { TaskType, TaskState } from "../../types/taskType";
 const initialState: TaskState = {
   tasks: [],
   isLoading: false,
-  error: ""
+  error: "",
 };
 
 export const taskSlice = createSlice({
@@ -31,7 +31,7 @@ export const taskSlice = createSlice({
     dateFromFBisLoaded: (state, action: PayloadAction<TaskType[]>) => {
       state.tasks = action.payload;
       state.isLoading = true;
-    }
-  }
+    },
+  },
 });
 export default taskSlice.reducer;

@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: "semiotic-joy-340915",
   storageBucket: "semiotic-joy-340915.appspot.com",
   messagingSenderId: "421555283725",
-  appId: "1:421555283725:web:4cb2906b641c8fc5e9f244"
+  appId: "1:421555283725:web:4cb2906b641c8fc5e9f244",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -21,5 +21,5 @@ export const database = {
   set: FBdatabase.set,
   remove: FBdatabase.remove,
   update: FBdatabase.update,
-  offline: FBdatabase.goOffline
+  offline: FBdatabase.goOffline,
 };

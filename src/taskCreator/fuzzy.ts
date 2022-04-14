@@ -17,7 +17,7 @@ export function addFuzzy() {
     fuzzySelect.options[
       (<HTMLSelectElement>document.querySelector("#fuzzy select")).selectedIndex
     ].value;
-    
+
   fuzzyInput.placeholder = `Search by Title`;
 
   fuzzySelect.addEventListener("change", (e: Event) => {
@@ -42,16 +42,17 @@ export function addFuzzy() {
   fuzzyInput.addEventListener("input", (e: Event) => {
     const { value } = <HTMLInputElement>e.target;
     const fuzzy = new FuzzySearch(curState.tasks, [fuzzySelectValue], {
-      caseSensitive: true
+      caseSensitive: true,
     });
     let result = fuzzy.search(value) as TaskType[];
-    if(onlyDone.checked) result = result.filter((el)=>el.status === "done");
-    if(inProgress.checked) result = result.filter((el)=>el.status !== "done");
+    if (onlyDone.checked) result = result.filter((el) => el.status === "done");
+    if (inProgress.checked)
+      result = result.filter((el) => el.status !== "done");
 
     const taskStateType = {
       tasks: result,
       isLoading: true,
-      error: ""
+      error: "",
     };
 
     drawToDoList(taskList, taskStateType);

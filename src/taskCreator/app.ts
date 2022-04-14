@@ -3,15 +3,14 @@ import {
   deleteTask,
   updateTask,
   drawTasksList,
-  tugleStatusTask
+  tugleStatusTask,
 } from "./crudTask";
 import { statusFilter } from "./statusFilter";
 import { setupStore } from "./store/store";
 import { taskSlice } from "./store/reducers/taskSlicer";
 import { drawToDoList } from "./drawToDoList";
 import { addFuzzy } from "./fuzzy";
-import {requestTaskFromFB} from "./requestTaskFromFB";
-
+import { requestTaskFromFB } from "./requestTaskFromFB";
 
 export async function app() {
   const taskForm = document.querySelector("form");
@@ -21,11 +20,15 @@ export async function app() {
   const taskList = <HTMLInputElement>document.querySelector(".taskList");
   const state = setupStore.getState();
 
-  drawToDoList(taskList,state);
+  drawToDoList(taskList, state);
 
   setupStore.subscribe(drawTasksList);
-  
-  if(!state.isLoading) setupStore.dispatch(taskSlice.actions.dateFromFBisLoaded(await requestTaskFromFB()));  
+
+  if (!state.isLoading) {
+    setupStore.dispatch(
+      taskSlice.actions.dateFromFBisLoaded(await requestTaskFromFB())
+    );
+  }
 
   checkStatusBlock.addEventListener("click", statusFilter);
 
