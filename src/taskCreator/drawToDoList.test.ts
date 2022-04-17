@@ -1,7 +1,7 @@
 import { drawToDoList } from "./drawToDoList";
 import { TaskState, TaskType } from "./types/taskType";
 
-describe.skip("test drawToDoList", () => {
+describe("test drawToDoList", () => {
   const testTasks: TaskType[] = [
     {
       date: "2022-04-12",
@@ -9,7 +9,7 @@ describe.skip("test drawToDoList", () => {
       id: 1649766206618,
       status: "in progress",
       title: "test title",
-    },
+    }
   ];
 
   let el: HTMLDivElement;
@@ -27,7 +27,7 @@ describe.skip("test drawToDoList", () => {
       error: "error",
     };
     drawToDoList(el, testState);
-    expect(el.innerHTML).toBe('<div class="loadingList"></div>');
+    expect(document.body.innerHTML).toBe('<div class="loadingList"></div>');
   });
   it("drawToDoList should draw a tasks list based on incoming data", () => {
     const testState: TaskState = {
@@ -35,11 +35,11 @@ describe.skip("test drawToDoList", () => {
       isLoading: true,
       error: "error",
     };
-    let taskItem = `<ol id="olList"><li class="taskListItem redItem"><h4>test title</h4><hr><p class="descriptionPInTask">test descripton</p><p class="dataPInTask">2022.04.12</p> <div class="del_updateBlock">
-        <input onclick="deleteTask(1649766206618)" class="dellBut" type="button" value="X">
-        <input onclick="updateTask(1649766206618)" class="updateBut" type="button" value="🖉">
-        <input onclick="tugleStatusTask(1649766206618)" class="tugleStatus" type="button" value="✓">
-      </div></li> </ol>`;
+    const taskItem = `<ol id="olList"><li class="taskListItem redItem"><h4>test title</h4><hr><p class="descriptionPInTask">test descripton</p><p class="dataPInTask">2022.04.12</p> <div class="del_updateBlock">
+          <input onclick="deleteTask(1649766206618)" class="dellBut" type="button" value="X">
+          <input onclick="updateTask(1649766206618)" class="updateBut" type="button" value="🖉">
+          <input onclick="tugleStatusTask(1649766206618)" class="tugleStatus" type="button" value="✓">
+        </div></li> </ol>`;
     drawToDoList(el, testState);
     expect(el.innerHTML).toBe(taskItem);
   });

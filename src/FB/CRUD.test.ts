@@ -1,12 +1,7 @@
 import { Crud, CRUDType } from "./CRUD";
-import { database } from "./memory/initialFB";
+import { offline } from "./memory/initialFB";
 import { TaskType } from "../taskCreator/types/taskType";
 
-type db = {
-  offline: () => void;
-};
-
-// eslint-disable-next-line jest/no-disabled-tests
 describe.skip("CRUD", () => {
   const testTasks: TaskType = {
     date: "2022-04-12",
@@ -20,23 +15,21 @@ describe.skip("CRUD", () => {
     testCrud = new Crud();
   });
   afterAll(() => {
-    ((database as unknown) as db).offline();
+    offline();
   });
   it("hould create expected Item", async () => {
     expect(await testCrud.createData(testTasks)).toBe(testTasks);
-    expect(
-      await testCrud.getData().filter((el) => el.id === 1649766206618)
-    ).toStrictEqual(testTasks);
+    const fbEl = await testCrud.getData() as TaskType[];
+    expect(fbEl["1649766206618"]).toStrictEqual(testTasks);
   });
   it("should update and delete expected Item by color", async () => {
-    const updetedRed = { ...testTasks, status: "done" };
+    const updetedRed = { ...testTasks, status: "done" } as TaskType;
     expect(await testCrud.updateData(updetedRed)).toBe(updetedRed);
-    expect(
-      await testCrud.getData().filter((el) => el.id === 1649766206618)
-    ).toStrictEqual(updetedRed);
-    expect(await testCrud.deleteData(1649766206618)).toBe(null);
-    expect(
-      await testCrud.getData().filter((el) => el.id === 1649766206618)
-    ).toBe(null);
+    let fbEl = await testCrud.getData() as TaskType[];
+    expect(fbEl["1649766206618"]).toStrictEqual(updetedRed);
+   await testCrud.deleteData(1649766206618);
+    fbEl = await testCrud.getData() as TaskType[];
+    console.log(fbEl)
+    expect(fbEl["1649766206618"]).toBe(undefined);
   });
 });

@@ -11,7 +11,7 @@ const firebaseConfig = {
   appId: "1:421555283725:web:4cb2906b641c8fc5e9f244",
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 export const database = {
   db: FBdatabase.getDatabase(app),
@@ -20,6 +20,6 @@ export const database = {
   ref: FBdatabase.ref,
   set: FBdatabase.set,
   remove: FBdatabase.remove,
-  update: FBdatabase.update,
-  offline: FBdatabase.goOffline,
+  update: FBdatabase.update
 };
+export const offline = ()=> FBdatabase.goOffline(database.db);

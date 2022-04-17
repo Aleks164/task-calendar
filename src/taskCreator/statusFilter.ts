@@ -5,7 +5,6 @@ export function statusFilter(e: Event) {
   const taskList = <HTMLDivElement>document.querySelector(".taskList");
   const clickedEl = e.target as HTMLInputElement;
   let curState = setupStore.getState();
-
   if (clickedEl.value === "onlyDone") {
     const tasks = curState.tasks.filter((task) => task.status === "done");
     curState = { ...curState, tasks };
@@ -19,6 +18,7 @@ export function statusFilter(e: Event) {
     drawToDoList(taskList, curState);
   }
   if (clickedEl.value === "allTasks") {
+    console.log("allTasks11", taskList, "allTasks11", document.body.innerHTML)
     drawToDoList(taskList, curState);
   }
 }
