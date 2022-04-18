@@ -6,7 +6,51 @@ html {
   margin-right: auto;
   background-attachment: fixed;
 }
-
+.aboutPicture {
+  float: left;
+  background-image: url(temp_calendar/image/greenList.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  border: 2px solid;
+  display: inline-block;
+}
+.aboutCont {
+  display: inline-block;
+  padding: 5px;
+  min-width: 365px;
+}
+.refs {
+  display: block;
+  height: 170px;
+}
+.mailImg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  border: 2px solid;
+  background-image: url(temp_calendar/image/mail.png);
+}
+.githubImg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 15px;
+  height: 15px;
+  border: 2px solid;
+  background-image: url(temp_calendar/image/github.jpg);
+}
+.refs div {
+  float: left;
+  display: inline-block;
+}
+.pLink {
+}
+.aboutCont * {
+  margin: 5px;
+}
 #calendarField {
   width: 100%;
   line-height: 1.2em;
@@ -102,11 +146,8 @@ html {
   padding-top: 15px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow:
-    0 1px 4px rgb(0 0 0 / 30%),
-    -23px 0 20px -23px rgb(0 0 0 / 80%),
-    23px 0 20px -23px rgb(0 0 0 / 80%),
-    0 0 40px rgb(0 0 0 / 10%) inset;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 30%), -23px 0 20px -23px rgb(0 0 0 / 80%),
+    23px 0 20px -23px rgb(0 0 0 / 80%), 0 0 40px rgb(0 0 0 / 10%) inset;
 }
 
 #inputLine {
@@ -381,13 +422,10 @@ p {
   border-top: 1px solid rgb(255 255 255 / 10%);
   border-bottom: 1px solid rgb(0 0 0 / 10%);
   outline: none;
-  background:
-    #7de3ed
+  background: #7de3ed
     radial-gradient(rgb(255 255 255 / 0%), rgb(255 255 255 / 50%));
-  box-shadow:
-    inset rgb(255 255 255 / 60%) 0 0.3em 0.3em,
-    inset rgb(0 0 0 / 20%) 0 -0.1em 0.3em,
-    rgb(128 161 103) 0 7px 1px,
+  box-shadow: inset rgb(255 255 255 / 60%) 0 0.3em 0.3em,
+    inset rgb(0 0 0 / 20%) 0 -0.1em 0.3em, rgb(128 161 103) 0 7px 1px,
     rgb(0 0 0 / 20%) 0 0.5em 5px;
   transition: background 0.2s ease-in-out;
   grid-area: addButton;
@@ -402,10 +440,8 @@ p {
   top: 0.2em;
   color: rgb(254 255 255 / 90%);
   text-shadow: rgb(0 0 0 / 20%) 0 1px 2px;
-  box-shadow:
-    inset rgb(255 255 255 / 60%) 0 0.3em 0.3em,
-    inset rgb(0 0 0 / 20%) 0 -0.1em 0.3em,
-    rgb(0 0 0 / 40%) 0 0.1em 1px,
+  box-shadow: inset rgb(255 255 255 / 60%) 0 0.3em 0.3em,
+    inset rgb(0 0 0 / 20%) 0 -0.1em 0.3em, rgb(0 0 0 / 40%) 0 0.1em 1px,
     rgb(0 0 0 / 30%) 0 0.2em 6px;
 }
 
@@ -417,11 +453,10 @@ p {
   top: 0;
   left: 5%;
   border-radius: 0.5em 0.5em 1em 1em / 0.5em 0.5em 2em 2em;
-  background-image:
-    linear-gradient(
-      rgb(255 255 255 / 55%),
-      rgb(255 255 255 / 30%)
-    );
+  background-image: linear-gradient(
+    rgb(255 255 255 / 55%),
+    rgb(255 255 255 / 30%)
+  );
 }
 
 .button:active::after {
@@ -441,8 +476,7 @@ a.aAbout {
 a.aCalendar:hover,
 a.aTasks:hover,
 a.aAbout:hover {
-  background-image:
-    radial-gradient(
+  background-image: radial-gradient(
       1px 45% at 0% 50%,
       rgb(0 0 0 / 60%),
       transparent
@@ -453,15 +487,13 @@ a.aAbout:hover {
 a.aCalendar:active,
 a.aTasks:active,
 a.aAbout:active {
-  background-image:
-    radial-gradient(
+  background-image: radial-gradient(
       45% 45% at 50% 100%,
       rgb(255 255 255 / 90%),
       rgb(255 255 255 / 0%)
     ),
     linear-gradient(rgb(255 255 255 / 40%), rgb(255 255 255 / 30%));
-  box-shadow:
-    inset rgb(162 95 42 / 40%) 0 0 0 1px,
+  box-shadow: inset rgb(162 95 42 / 40%) 0 0 0 1px,
     inset rgb(255 255 255 / 90%) 0 0 1px 3px;
 }
 

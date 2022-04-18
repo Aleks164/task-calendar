@@ -62,45 +62,4 @@ export function taskRender(data) {
       }</div>`;
     }
   });
-
-  // document.querySelectorAll(".greenList").forEach((el) => {
-  //   el.addEventListener("mouseover", (e) => {
-  //     const redListEl = (<HTMLElement>(
-  //       (<HTMLElement>e.target).parentElement?.querySelector(`.greenListTasks`)
-  //     )).style;
-
-  //     redListEl.display = "block";
-  //     redListEl.zIndex = "10";
-  //   });
-  // });
-  // document.querySelectorAll(".greenList").forEach((el) => {
-  //   el.addEventListener("mouseout", (e) => {
-  //     const redListEl = (<HTMLElement>(
-  //       (<HTMLElement>e.target).parentElement?.querySelector(`.greenListTasks`)
-  //     )).style;
-
-  //     redListEl.display = "none";
-  //     redListEl.zIndex = "5";
-  //   });
-  // });
-  // document.querySelectorAll(".redList").forEach((el) => {
-  //   el.addEventListener("mouseover", (e) => {
-  //     const redListEl = (<HTMLElement>(
-  //       (<HTMLElement>e.target).parentElement?.querySelector(`.redListTasks`)
-  //     )).style;
-
-  //     redListEl.display = "block";
-  //     redListEl.zIndex = "10";
-  //   });
-  // });
-  // document.querySelectorAll(".redList").forEach((el) => {
-  //   el.addEventListener("mouseout", (e) => {
-  //     const redListEl = (<HTMLElement>(
-  //       (<HTMLElement>e.target).parentElement?.querySelector(`.redListTasks`)
-  //     )).style;
-
-  //     redListEl.display = "none";
-  //     redListEl.zIndex = "5";
-  //   });
-  // });
 }

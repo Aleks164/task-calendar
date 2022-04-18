@@ -27,8 +27,11 @@ export function calendarLoader() {
     );
     taskRender(data);
   });
+
+  console.log("loadingList", state.isLoading)
   if (!state.isLoading) {
     calendarField.classList.add("loadingList");
+    console.log("loadingList2", state.isLoading)
     setTimeout(async () => {
       data = await requestTaskFromFB();
       setupStore.dispatch(taskSlice.actions.dateFromFBisLoaded(data));

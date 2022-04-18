@@ -1,32 +1,36 @@
+/* eslint-disable no-promise-executor-return */
 import { statusFilter } from "./statusFilter";
 import * as draw from "./drawToDoList";
 
+const state = {
+  tasks: [
+    {
+      date: "2022-04-12",
+      description: "test descripton",
+      id: 111,
+      status: "in progress",
+      title: "test title"
+    },
+    {
+      date: "2022-04-12",
+      description: "test descripton",
+      id: 222,
+      status: "done",
+      title: "test title"
+    }
+  ],
+  error: "",
+  isLoading: true
+}
+
 jest.mock("./store/store", () => ({
   setupStore: {
-    getState: jest.fn().mockReturnValue({
-      tasks: [
-        {
-          date: "2022-04-12",
-          description: "test descripton",
-          id: 111,
-          status: "in progress",
-          title: "test title"
-        },
-        {
-          date: "2022-04-12",
-          description: "test descripton",
-          id: 222,
-          status: "done",
-          title: "test title"
-        }
-      ],
-      error: "",
-      isLoading: true
-    })
+    getState: jest.fn().mockReturnValue(state)
   }
 }));
 let el: HTMLDivElement;
 let taskList: HTMLDivElement;
+let spyDraw: any;
 let allTasks;
 let onlyDone;
 let inProgress;
@@ -66,57 +70,71 @@ describe("test drawToDoList", () => {
     taskList.innerHTML = `<div class="taskList"></div>`;
     document.body.appendChild(el);
     document.body.appendChild(taskList);
-
+    spyDraw = jest.spyOn(draw, "drawToDoList");
   });
   afterEach(() => {
     document.body.innerHTML = "";
+    spyDraw.mockReset();
+    spyDraw.mockRestore();
   });
-  it("statusFilter should draw tasks alllist based on allTasks status param", async () => {
+  it("statusFilter should draw tasks based on allTasks status param", async () => {
     allTasks = el.querySelector("#allTasks");
-    console.log(allTasks.value);
-    let spyDraw = jest.spyOn(draw, "drawToDoList");
-    let eventTforAll = { target: allTasks };
-    onlyDone = el.querySelector("#onlyDone");
-    inProgress = el.querySelector("#inProgress");
+    const eventTforAll = { target: allTasks };
 
     statusFilter(eventTforAll as Event);
 
     await sleep(0);
 
-    console.log(document.body.innerHTML)
-    taskList = document.querySelector(".taskList");
-    console.log(taskList.innerHTML)
-    expect(spyDraw).toHaveBeenCalledWith("sdasd");
+    const filtredTaskList = document.querySelector(".taskList");
+    expect(spyDraw).toHaveBeenCalledWith(filtredTaskList, state);
   });
-  // it("statusFilter should draw tasks alllist based on onlyDone status param", async () => {
-  //   onlyDone = el.querySelector("#onlyDone");
-  //   let eventTforAll = { target: allTasks };
+  it("statusFilter should draw tasks based on onlyDone status param", async () => {
+    onlyDone = el.querySelector("#onlyDone");
 
-  //   let taskItem = `</ol><ol id="olList"><li class="taskListItem greenItem"><h4>test title</h4><hr><p class="descriptionPInTask">test descripton</p><p class="dataPInTask">2022.04.12</p> <div class="del_updateBlock">
-  //     <input onclick="deleteTask(222)" class="dellBut" type="button" value="X">
-  //     <input onclick="updateTask(222)" class="updateBut" type="button" value="🖉">
-  //     <input onclick="tugleStatusTask(222)" class="tugleStatus" type="button" value="✓">
-  //   </div></li> </ol>`;
-  //   statusFilter(eventTforAll);
+    const eventTforonlyDone = { target: onlyDone };
 
-  //   await sleep(50);
-  //   taskList = document.querySelector(".taskList");
-  //   expect(taskList.innerHTML).toBe(taskItem);
-  // });
-  // it("statusFilter should draw tasks alllist based on allTasks status param", async () => {
-  //   inProgress = el.querySelector("#inProgress");
-  //   let eventTforAll = { target: inProgress };
+    statusFilter(eventTforonlyDone as Event);
 
-  //   let taskItem = `<ol id="olList"><li class="taskListItem redItem"><h4>test title</h4><hr><p class="descriptionPInTask">test descripton</p><p class="dataPInTask">2022.04.12</p> <div class="del_updateBlock">
-  //       <input onclick="deleteTask(111)" class="dellBut" type="button" value="X">
-  //       <input onclick="updateTask(111)" class="updateBut" type="button" value="🖉">
-  //       <input onclick="tugleStatusTask(111)" class="tugleStatus" type="button" value="✓">
-  //     </div></li></ol>`;
+    await sleep(0);
 
-  //   statusFilter(eventTforAll);
+    const filtredTaskList = document.querySelector(".taskList");
+    const filtredState = {
+      tasks: [
+        {
+          date: '2022-04-12',
+          description: 'test descripton',
+          id: 222,
+          status: 'done',
+          title: 'test title'
+        }
+      ],
+      error: '',
+      isLoading: true
+    }
+    expect(spyDraw).toHaveBeenCalledWith(filtredTaskList, filtredState);
+  });
+  it("statusFilter should draw tasks allist based on inProgress status param", async () => {
+    inProgress = el.querySelector("#inProgress");
+    const eventTforAll = { target: inProgress };
 
-  //   await sleep(50);
-  //   taskList = document.querySelector(".taskList");
-  //   expect(taskList.innerHTML).toBe(taskItem);
-  // });
+    statusFilter(eventTforAll as Event);
+
+    await sleep(0);
+
+    const filtredTaskList = document.querySelector(".taskList");
+    const filtredState = {
+      tasks: [
+        {
+          date: '2022-04-12',
+          description: 'test descripton',
+          id: 111,
+          status: 'in progress',
+          title: 'test title'
+        }
+      ],
+      error: '',
+      isLoading: true
+    }
+    expect(spyDraw).toHaveBeenCalledWith(filtredTaskList, filtredState);
+  });
 });

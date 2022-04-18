@@ -15,10 +15,10 @@ export function statusFilter(e: Event) {
       (task) => task.status === "in progress"
     );
     curState = { ...curState, tasks };
+
     drawToDoList(taskList, curState);
   }
   if (clickedEl.value === "allTasks") {
-    console.log("allTasks11", taskList, "allTasks11", document.body.innerHTML)
     drawToDoList(taskList, curState);
   }
 }
