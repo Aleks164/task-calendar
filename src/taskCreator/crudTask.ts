@@ -4,12 +4,12 @@ import { drawToDoList } from "./drawToDoList";
 import { TaskType } from "./types/taskType";
 import { curDate } from "./curDate";
 import { Crud } from "../FB/CRUD";
+import { tasksSortFilter } from "./tasksSortFilter";
 
 let titleInput: HTMLInputElement;
 let taskInput: HTMLInputElement;
 let dateInput: HTMLInputElement;
 let taskForm: HTMLFormElement;
-let taskList: HTMLDivElement;
 let addButton: HTMLInputElement;
 let allTasks: HTMLInputElement;
 
@@ -20,7 +20,6 @@ function upDateLinks() {
   taskInput = <HTMLInputElement>document.querySelector(".taskInput");
   dateInput = <HTMLInputElement>document.querySelector(".dateInput");
   taskForm = <HTMLFormElement>document.querySelector("form");
-  taskList = <HTMLInputElement>document.querySelector(".taskList");
   addButton = <HTMLInputElement>document.querySelector(".addButton");
   allTasks = <HTMLInputElement>document.querySelector("#allTasks");
 }
@@ -30,7 +29,7 @@ const newTask: (id?: number) => TaskType = (id?: number) => ({
   title: titleInput.value,
   description: taskInput.value,
   date: dateInput.value,
-  status: "in progress",
+  status: "in progress"
 });
 
 export function inputCliner() {
@@ -45,7 +44,7 @@ export function getTaskList() {
 
 export async function drawTasksList() {
   upDateLinks();
-  drawToDoList(taskList, getTaskList());
+  drawToDoList(tasksSortFilter());
 }
 
 export function addTask(e: SubmitEvent) {
@@ -103,13 +102,12 @@ export function updateTask(id: number) {
 
   taskForm?.addEventListener("submit", addUpdatedTask);
 }
+
 export function tugleStatusTask(id: number) {
   const taskElList = setupStore.getState();
   const tugleStatusEl = taskElList.tasks.find((el) => el.id === id);
   const toglStatus = tugleStatusEl?.status === "done" ? "in progress" : "done";
-
   const updatedTask = { ...tugleStatusEl, status: toglStatus } as TaskType;
-
   setupStore.dispatch(taskSlice.actions.upDateTask(updatedTask));
   fb.updateData(updatedTask);
   inputCliner();

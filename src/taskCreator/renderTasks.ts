@@ -47,7 +47,11 @@ export function renderTasks() {
     max="2022-12-31"
   />
   <input class="addButton" type="submit" value="add Task" />
-    </div>   
+  <div id="onlyToday">
+  <input type="checkbox"  name="onlyToday">
+  <label for="onlyToday">only Today</label>
+</div>  
+  </div>   
   </form>
 </div>
 <hr />
@@ -58,6 +62,7 @@ export function renderTasks() {
 <option value="date">Date</option>
 </select>
 <input placeholder="Search task..." id="fuzzyInput" type="text" />
+
 </div>
 <hr />
 <div class="taskList"></div>`;

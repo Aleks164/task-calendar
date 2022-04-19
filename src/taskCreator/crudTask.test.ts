@@ -43,7 +43,6 @@ const sleep = (x: number) => new Promise((resolve) => setTimeout(resolve, x));
 
 describe.skip("test drawToDoList", () => {
   beforeEach(() => {
-    location.pathname = "/tasks";
     el = <HTMLDivElement>document.createElement("div");
     taskList = <HTMLDivElement>document.createElement("div");
     el.innerHTML = `<div id="checkStatusBlock">
