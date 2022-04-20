@@ -9,7 +9,7 @@ html {
 
 .aboutPicture {
   float: left;
-  background-image: url(temp_calendar/image/greenList.png);
+  background-image: url("images/greenList.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -42,7 +42,7 @@ html {
   width: 15px;
   height: 15px;
   border: 2px solid;
-  background-image: url(temp_calendar/image/mail.png);
+  background-image: url("images/mail.png");
 }
 
 .githubImg {
@@ -51,7 +51,7 @@ html {
   width: 15px;
   height: 15px;
   border: 2px solid;
-  background-image: url(temp_calendar/image/github.jpg);
+  background-image: url("images/github.jpg");
 }
 
 .refs div {
@@ -89,12 +89,12 @@ html {
 }
 
 .greenList {
-  background-image: url("temp_calendar/image/greenList.png");
+  background-image: url("images/greenList.png");
   top: 5%;
 }
 
 .redList {
-  background-image: url("temp_calendar/image/redList.png");
+  background-image: url("images/redList.png");
   bottom: 2%;
 }
 
@@ -317,7 +317,7 @@ a {
 }
 
 .loadingList {
-  background-image: url("temp_calendar/image/loading.gif");
+  background-image: url("images/loading.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

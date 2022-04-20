@@ -1,5 +1,5 @@
-import { Crud } from "../FB/CRUD";
-import { TaskType } from "./types/taskType";
+import { Crud } from "../../firebase_init/CRUD";
+import { TaskType } from "../../types/taskType";
 import { curDate } from "./curDate";
 
 const сrud = new Crud();

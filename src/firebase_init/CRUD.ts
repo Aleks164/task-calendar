@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import { database } from "./memory/initialFB";
-import { TaskType } from "../taskCreator/types/taskType";
+import { TaskType } from "../types/taskType";
 
 export interface CRUDType {
   getData(): Promise<TaskType[] | string>;

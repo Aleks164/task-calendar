@@ -1,6 +1,6 @@
 import { addTask, drawTasksList } from "./crudTask";
-import { setupStore } from "./store/store";
-import { taskSlice } from "./store/reducers/taskSlicer";
+import { setupStore } from "../../store/store";
+import { taskSlice } from "../../store/reducers/taskSlicer";
 import { drawToDoList } from "./drawToDoList";
 import { requestTaskFromFB } from "./requestTaskFromFB";
 import { tasksSortFilter } from "./tasksSortFilter";

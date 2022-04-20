@@ -2,13 +2,14 @@
 import { calendarLoader } from "./calendarLoader";
 import * as taskRender from "./taskRender";
 import * as calendar from "./calenarTemplateRender";
+import * as FB from "../tasks_page/requestTaskFromFB";
 
 jest.mock("./taskRender", () => ({ taskRender: jest.fn() }));
 jest.mock("./calenarTemplateRender", () => ({ calenarTemplateRender: jest.fn() }));
 
-jest.mock("../taskCreator/requestTaskFromFB", () => () => 5);
+// jest.mock("../taskCreator/requestTaskFromFB", () => () => 5);
 
-jest.mock("../taskCreator/store/store", () => ({
+jest.mock("../tasks_page/store/store", () => ({
   setupStore: {
     dispatch: jest.fn(),
     getState: jest
@@ -102,6 +103,22 @@ describe("calendarLoader test", () => {
     let calendarField = <HTMLElement>document.querySelector("#calendarField");
     const spytaskRender = jest.spyOn(taskRender, "taskRender");
     const spycalenarTemplateRender = jest.spyOn(calendar, "calenarTemplateRender");
+    const spyFB = jest.spyOn(FB, "requestTaskFromFB").mockResolvedValue([
+      {
+        date: "2022-04-12",
+        description: "test descripton",
+        id: 111,
+        status: "in progress",
+        title: "test title"
+      },
+      {
+        date: "2022-04-12",
+        description: "test descripton",
+        id: 222,
+        status: "done",
+        title: "test title"
+      }
+    ]);
 
     calendarLoader();
 
@@ -129,31 +146,31 @@ describe("calendarLoader test", () => {
         title: "test title"
       }
     ]);
+    jest.useRealTimers();
     expect(spytaskRender).toHaveBeenCalledTimes(1);
-
     calendarLoader();
-
     await sleep(600);
 
-    // expect(spytaskRender).toHaveBeenCalledTimes(2);
-    // expect(spytaskRender).toHaveBeenCalledWith([
-    //   {
-    //     date: "2022-04-12",
-    //     description: "test descripton",
-    //     id: 111,
-    //     status: "in progress",
-    //     title: "test title"
-    //   },
-    //   {
-    //     date: "2022-04-12",
-    //     description: "test descripton",
-    //     id: 222,
-    //     status: "done",
-    //     title: "test title"
-    //   }
-    // ]);
+    expect(spytaskRender).toHaveBeenCalledTimes(2);
+    expect(spytaskRender).toHaveBeenCalledWith([
+      {
+        date: "2022-04-12",
+        description: "test descripton",
+        id: 111,
+        status: "in progress",
+        title: "test title"
+      },
+      {
+        date: "2022-04-12",
+        description: "test descripton",
+        id: 222,
+        status: "done",
+        title: "test title"
+      }
+    ]);
 
-    // document.querySelector("#calendarCont input")?.dispatchEvent(new Event("change"));
-    // expect(spytaskRender).toHaveBeenCalledTimes(3);
+    document.querySelector("#inputLine")?.dispatchEvent(new Event("change"));
+    await sleep(50);
+    expect(spytaskRender).toHaveBeenCalledTimes(4);
   });
 });

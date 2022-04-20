@@ -1,6 +1,6 @@
 import { Crud, CRUDType } from "./CRUD";
 import { offline } from "./memory/initialFB";
-import { TaskType } from "../taskCreator/types/taskType";
+import { TaskType } from "../types/taskType";
 
 describe.skip("CRUD", () => {
   const testTasks: TaskType = {
@@ -27,7 +27,7 @@ describe.skip("CRUD", () => {
     expect(await testCrud.updateData(updetedRed)).toBe(updetedRed);
     let fbEl = await testCrud.getData() as TaskType[];
     expect(fbEl["1649766206618"]).toStrictEqual(updetedRed);
-   await testCrud.deleteData(1649766206618);
+    await testCrud.deleteData(1649766206618);
     fbEl = await testCrud.getData() as TaskType[];
     console.log(fbEl)
     expect(fbEl["1649766206618"]).toBe(undefined);

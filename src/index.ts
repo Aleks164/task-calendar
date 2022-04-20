@@ -1,7 +1,7 @@
-import { renderTasks } from "./taskCreator/renderTasks";
-import { Router } from "./taskCreator/router/router";
-import { calendarRender } from "./temp_calendar/index";
-import { aboutRender } from "./About/index";
+import { renderTasks } from "./pages/tasks_page/renderTasks";
+import { Router } from "./router/router";
+import { calendarRender } from "./pages/calendar_page/index";
+import { aboutRender } from "./pages/about_page/index";
 import "./index.css";
 
 const router = Router();

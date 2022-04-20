@@ -1,7 +1,7 @@
 import FuzzySearch from "fuzzy-search";
 import { curDate } from "./curDate";
-import { setupStore } from "./store/store";
-import { TaskType } from "./types/taskType";
+import { setupStore } from "../../store/store";
+import { TaskType } from "../../types/taskType";
 
 export function tasksSortFilter() {
   const curState = setupStore.getState();

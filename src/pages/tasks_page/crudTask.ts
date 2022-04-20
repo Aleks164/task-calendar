@@ -1,9 +1,9 @@
-import { taskSlice } from "./store/reducers/taskSlicer";
-import { setupStore } from "./store/store";
+import { taskSlice } from "../../store/reducers/taskSlicer";
+import { setupStore } from "../../store/store";
 import { drawToDoList } from "./drawToDoList";
-import { TaskType } from "./types/taskType";
+import { TaskType } from "../../types/taskType";
 import { curDate } from "./curDate";
-import { Crud } from "../FB/CRUD";
+import { Crud } from "../../firebase_init/CRUD";
 import { tasksSortFilter } from "./tasksSortFilter";
 
 let titleInput: HTMLInputElement;

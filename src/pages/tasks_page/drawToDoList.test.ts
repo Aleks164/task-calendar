@@ -1,5 +1,5 @@
 import { drawToDoList } from "./drawToDoList";
-import { TaskState, TaskType } from "./types/taskType";
+import { TaskState, TaskType } from "../../types/taskType";
 import * as crudTask from "./crudTask";
 
 jest.mock("./crudTask", () => ({

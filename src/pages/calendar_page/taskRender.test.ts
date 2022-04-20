@@ -1,5 +1,6 @@
 import { taskRender } from "./taskRender";
 import { calenarTemplateRender } from "./calenarTemplateRender";
+import { TaskType } from "../../types/taskType";
 
 describe("taskRender test", () => {
   const testTasks: TaskType[] = [

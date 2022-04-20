@@ -1,4 +1,4 @@
-import { TaskState } from "./types/taskType";
+import { TaskState } from "../../types/taskType";
 import { deleteTask, updateTask, tugleStatusTask } from "./crudTask";
 
 export function drawToDoList(curState: TaskState) {
