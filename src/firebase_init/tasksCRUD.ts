@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-import { database } from "./memory/initialFB";
+import { database } from "./fb_init/initialFB";
 import { TaskType } from "../types/taskType";
 
 export interface CRUDType {

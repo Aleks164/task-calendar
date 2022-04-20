@@ -1,4 +1,4 @@
-import { TaskType } from "../../types/taskType";
+import { TaskType } from "./taskType";
 
 export interface CRUDType {
   create(newEl: TaskType): Promise<TaskType>;

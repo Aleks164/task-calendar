@@ -1,4 +1,4 @@
-import { Crud } from "../../firebase_init/CRUD";
+import { Crud } from "../../firebase_init/tasksCRUD";
 import { TaskType } from "../../types/taskType";
 import { curDate } from "./curDate";
 

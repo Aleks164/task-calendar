@@ -1,5 +1,5 @@
-import { Crud, CRUDType } from "./CRUD";
-import { offline } from "./memory/initialFB";
+import { Crud, CRUDType } from "./tasksCRUD";
+import { offline } from "./fb_init/initialFB";
 import { TaskType } from "../types/taskType";
 
 describe.skip("CRUD", () => {

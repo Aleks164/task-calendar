@@ -3,7 +3,7 @@ import { setupStore } from "../../store/store";
 import { drawToDoList } from "./drawToDoList";
 import { TaskType } from "../../types/taskType";
 import { curDate } from "./curDate";
-import { Crud } from "../../firebase_init/CRUD";
+import { Crud } from "../../firebase_init/tasksCRUD";
 import { tasksSortFilter } from "./tasksSortFilter";
 
 let titleInput: HTMLInputElement;
