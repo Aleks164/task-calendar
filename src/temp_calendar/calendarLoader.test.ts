@@ -133,6 +133,7 @@ describe("calendarLoader test", () => {
 
     calendarLoader();
 
+    await sleep(600);
 
     // expect(spytaskRender).toHaveBeenCalledTimes(2);
     // expect(spytaskRender).toHaveBeenCalledWith([
