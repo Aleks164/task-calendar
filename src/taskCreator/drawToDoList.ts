@@ -4,7 +4,6 @@ import { deleteTask, updateTask, tugleStatusTask } from "./crudTask";
 export function drawToDoList(curState: TaskState) {
   if (location.pathname === "/tasks") {
     const taskList = <HTMLElement>document.querySelector(".taskList");
-    console.log(taskList.innerHTML)
     if (!curState || !curState.isLoading) {
       taskList.classList.add("loadingList");
     } else {
@@ -41,7 +40,6 @@ export function drawToDoList(curState: TaskState) {
       document.querySelectorAll(`[data-tugleid]`).forEach((tugleButton) => {
         tugleButton.addEventListener("click", (e) => {
           const id = Number((<HTMLInputElement>e.target).dataset.tugleid);
-          console.log("tugleButton", id);
           tugleStatusTask(id);
         });
       });

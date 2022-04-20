@@ -52,7 +52,7 @@ describe("taskRender test", () => {
     jest.useRealTimers();
   });
   it("calenarTemplateRender rendering expect page", () => {
-    let calendarField = <HTMLElement>document.querySelector("#calendarField");
+    const calendarField = <HTMLElement>document.querySelector("#calendarField");
 
     if (calendarField) {
       calenarTemplateRender(calendarField, 2022, 3);

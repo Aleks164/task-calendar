@@ -1,3 +1,4 @@
+/* eslint-disable no-promise-executor-return */
 // import {
 //   addTask,
 //   deleteTask,
@@ -28,12 +29,8 @@ jest.mock("./store/store", () => ({
   }
 }));
 
-jest.mock("./curDate", () => {
-  return jest.fn(() => "22-04-2022");
-});
-jest.mock("./app", () => {
-  return jest.fn();
-});
+jest.mock("./curDate", () => jest.fn(() => "22-04-2022"));
+jest.mock("./app", () => jest.fn());
 
 let el: HTMLDivElement;
 let taskList: HTMLDivElement;

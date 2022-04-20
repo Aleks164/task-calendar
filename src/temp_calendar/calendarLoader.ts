@@ -4,6 +4,7 @@ import { requestTaskFromFB } from "../taskCreator/requestTaskFromFB";
 import { taskSlice } from "../taskCreator/store/reducers/taskSlicer";
 import { setupStore } from "../taskCreator/store/store";
 
+
 export function calendarLoader() {
   const state = setupStore.getState();
   let data = state.tasks;
@@ -27,15 +28,17 @@ export function calendarLoader() {
     );
     taskRender(data);
   });
-
-  console.log("loadingList", state.isLoading)
   if (!state.isLoading) {
+    console.log("5", state.isLoading)
     calendarField.classList.add("loadingList");
-    console.log("loadingList2", state.isLoading)
     setTimeout(async () => {
+      console.log("1")
       data = await requestTaskFromFB();
+      console.log("2")
       setupStore.dispatch(taskSlice.actions.dateFromFBisLoaded(data));
+      console.log("3")
       taskRender(data);
+      console.log("4")
       calendarField.classList.remove("loadingList");
     }, 500);
   } else {
