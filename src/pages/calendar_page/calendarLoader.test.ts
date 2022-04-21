@@ -9,7 +9,7 @@ jest.mock("./calenarTemplateRender", () => ({ calenarTemplateRender: jest.fn() }
 
 // jest.mock("../taskCreator/requestTaskFromFB", () => () => 5);
 
-jest.mock("../tasks_page/store/store", () => ({
+jest.mock("../../store/store", () => ({
   setupStore: {
     dispatch: jest.fn(),
     getState: jest
