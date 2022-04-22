@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/23</span>
+                <span class='fraction'>20/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -98,81 +98,75 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import FuzzySearch from "fuzzy-search";
 import { curDate } from "./curDate";
 import { setupStore } from "../../store/store";
 import { TaskType } from "../../types/taskType";
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >tasksSortFilter(</span>) {
-  const curState = <span class="cstat-no" title="statement not covered" >setupStore.getState();</span>
-  const onlyDone = <span class="cstat-no" title="statement not covered" >&lt;HTMLInputElement&gt;document.querySelector("#onlyDone");</span>
-  const inProgress = <span class="cstat-no" title="statement not covered" >&lt;HTMLInputElement&gt;document.querySelector("#inProgress");</span>
-  const onlyToday = <span class="cstat-no" title="statement not covered" >&lt;HTMLInputElement&gt;document.querySelector("#onlyToday input");</span>
-  const fuzzyInput = <span class="cstat-no" title="statement not covered" >&lt;HTMLInputElement&gt;document.querySelector("#fuzzyInput");</span>
+export function tasksSortFilter() {
+  const curState = setupStore.getState();
+  const onlyDone = &lt;HTMLInputElement&gt;document.querySelector("#onlyDone");
+  const inProgress = &lt;HTMLInputElement&gt;document.querySelector("#inProgress");
+  const onlyToday = &lt;HTMLInputElement&gt;document.querySelector("#onlyToday input");
+  const fuzzyInput = &lt;HTMLInputElement&gt;document.querySelector("#fuzzyInput");
 &nbsp;
-  let tasks = <span class="cstat-no" title="statement not covered" >[...curState.tasks].sort(</span>
-<span class="fstat-no" title="function not covered" >    (a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >Number(b.id) - Number(a.id)</span>
+  let tasks = [...curState.tasks].sort(
+    (a, b) =&gt; Number(b.id) - Number(a.id)
   );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (onlyToday.checked) <span class="cstat-no" title="statement not covered" >tasks = tasks.filter(<span class="fstat-no" title="function not covered" >(e</span>l) =&gt; <span class="cstat-no" title="statement not covered" >el.date === curDate())</span>;</span></span>
-<span class="cstat-no" title="statement not covered" >  if (onlyDone.checked) <span class="cstat-no" title="statement not covered" >tasks = tasks.filter(<span class="fstat-no" title="function not covered" >(e</span>l) =&gt; <span class="cstat-no" title="statement not covered" >el.status === "done")</span>;</span></span>
-<span class="cstat-no" title="statement not covered" >  if (inProgress.checked) <span class="cstat-no" title="statement not covered" >tasks = tasks.filter(<span class="fstat-no" title="function not covered" >(e</span>l) =&gt; <span class="cstat-no" title="statement not covered" >el.status !== "done")</span>;</span></span>
+  if (onlyToday.checked) tasks = tasks.filter((el) =&gt; el.date === curDate());
+  if (onlyDone.checked) tasks = tasks.filter((el) =&gt; el.status === "done");
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (inProgress.checked) <span class="cstat-no" title="statement not covered" >tasks = tasks.filter(<span class="fstat-no" title="function not covered" >(e</span>l) =&gt; <span class="cstat-no" title="statement not covered" >el.status !== "done")</span>;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (fuzzyInput.value !== "") {</span>
-    const fuzzySelect = <span class="cstat-no" title="statement not covered" >&lt;HTMLSelectElement&gt;(</span>
+  if (fuzzyInput.value !== "") {
+    const fuzzySelect = &lt;HTMLSelectElement&gt;(
       document.querySelector("#fuzzy select")
     );
     const fuzzySelectValue =
-<span class="cstat-no" title="statement not covered" >      fuzzySelect.options[</span>
+      fuzzySelect.options[
         (&lt;HTMLSelectElement&gt;document.querySelector("#fuzzy select")).selectedIndex
       ].value;
-    const fuzzy = <span class="cstat-no" title="statement not covered" >new FuzzySearch(tasks, [fuzzySelectValue], {</span>
+    const fuzzy = new FuzzySearch(tasks, [fuzzySelectValue], {
       caseSensitive: true
     });
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    tasks = fuzzy.search(fuzzyInput.value) as TaskType[];</span>
+    tasks = fuzzy.search(fuzzyInput.value) as TaskType[];
   }
-<span class="cstat-no" title="statement not covered" >  console.log(tasks)</span>
-<span class="cstat-no" title="statement not covered" >  return { ...curState, tasks }</span>
+  return { ...curState, tasks }
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -181,7 +175,7 @@ export function <span class="fstat-no" title="function not covered" >tasksSortFi
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Apr 21 2022 23:29:41 GMT+0300 (Москва, стандартное время)
+                at Sat Apr 23 2022 02:11:06 GMT+0400 (GMT+04:00)
             </div>
         <script src="../../prettify.js"></script>
         <script>

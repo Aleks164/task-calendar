@@ -7,8 +7,8 @@
     "build": "webpack build --node-env production",
     "dev": "webpack serve --open --node-env development",
     "test": "jest --coverage",
-    "lint": "prettier --check . && eslint . --ext .js,.tsx && tsc --noEmit && stylelint \"**/*.css\"",
-    "lint:fix": "prettier --write . && eslint . --fix --ext .js,.tsx && stylelint \"**/*.css\" --fix",
+    "lint": "prettier --check . && eslint . --ext .js,.ts && ts --noEmit && stylelint \"**/*.css\"",
+    "lint:fix": "prettier --write . && eslint . --fix --ext .js,.ts && stylelint \"**/*.css\" --fix",
     "tsc": "npx tsc --noEmit",
     "prepare": "husky install"
   },
@@ -71,7 +71,7 @@
   "lint-staged": {
     "*.{js,ts}": [
       "prettier --write",
-      "eslint --cache --fix --ext .js,.tsx"
+      "eslint --cache --fix --ext .js,.ts"
     ],
     "*.{css,md,yml}": "prettier --write",
     "*.css": "stylelint --fix"

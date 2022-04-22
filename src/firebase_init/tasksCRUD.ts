@@ -2,8 +2,12 @@
 import { database } from "./fb_init/initialFB";
 import { TaskType } from "../types/taskType";
 
+interface GetDataType {
+  [id: string]: TaskType
+}
+
 export interface CRUDType {
-  getData(): Promise<TaskType[] | string>;
+  getData(): Promise<GetDataType | string>;
 
   createData(creatingObject: TaskType): Promise<string>;
 
@@ -12,8 +16,9 @@ export interface CRUDType {
   updateData(updatingObject: TaskType): Promise<string>;
 }
 
+
 export class Crud implements CRUDType {
-  async getData(): Promise<TaskType[] | string> {
+  async getData(): Promise<GetDataType | string> {
     const dbref = database.ref(database.db);
     return database
       .get(database.child(dbref, `tasks/`))

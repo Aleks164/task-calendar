@@ -3,7 +3,6 @@ import {
   addTask,
   deleteTask,
   updateTask,
-  drawTasksList,
   tugleStatusTask
 } from "./crudTask";
 
@@ -12,12 +11,10 @@ import * as reducers from "../../store/reducers/taskSlicer";
 import * as mockDate from "./curDate";
 import { TaskType } from "../../types/taskType";
 import { Crud } from "../../firebase_init/tasksCRUD";
-import { async } from "@firebase/util";
 
 jest.mock("../../firebase_init/tasksCRUD");
 
 let el: HTMLDivElement;
-let taskList: HTMLDivElement;
 let spyDate: jest.SpyInstance;
 let spyDateNow: jest.SpyInstance;
 let spyDispatch: jest.SpyInstance;
@@ -50,7 +47,6 @@ describe("test drawToDoList", () => {
       });
 
     el = <HTMLDivElement>document.createElement("div");
-    taskList = <HTMLDivElement>document.createElement("div");
     el.innerHTML = `<div id="checkStatusBlock">
     <input
       type="radio"

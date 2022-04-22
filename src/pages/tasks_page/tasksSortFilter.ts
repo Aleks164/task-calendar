@@ -29,9 +29,7 @@ export function tasksSortFilter() {
     const fuzzy = new FuzzySearch(tasks, [fuzzySelectValue], {
       caseSensitive: true
     });
-
     tasks = fuzzy.search(fuzzyInput.value) as TaskType[];
   }
-  console.log(tasks)
   return { ...curState, tasks }
 }

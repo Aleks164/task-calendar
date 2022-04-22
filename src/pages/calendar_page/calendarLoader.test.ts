@@ -7,8 +7,6 @@ import * as FB from "../tasks_page/requestTaskFromFB";
 jest.mock("./taskRender", () => ({ taskRender: jest.fn() }));
 jest.mock("./calenarTemplateRender", () => ({ calenarTemplateRender: jest.fn() }));
 
-// jest.mock("../taskCreator/requestTaskFromFB", () => () => 5);
-
 jest.mock("../../store/store", () => ({
   setupStore: {
     dispatch: jest.fn(),
@@ -123,7 +121,6 @@ describe("calendarLoader test", () => {
     calendarLoader();
 
     calendarField = <HTMLElement>document.querySelector("#calendarField tbody");
-    console.log(calendarField.innerHTML)
     expect(spycalenarTemplateRender).toHaveBeenCalledWith(
       calendarField,
       2022,
