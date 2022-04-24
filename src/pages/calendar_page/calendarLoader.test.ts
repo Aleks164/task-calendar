@@ -5,7 +5,9 @@ import * as calendar from "./calenarTemplateRender";
 import * as FB from "../tasks_page/requestTaskFromFB";
 
 jest.mock("./taskRender", () => ({ taskRender: jest.fn() }));
-jest.mock("./calenarTemplateRender", () => ({ calenarTemplateRender: jest.fn() }));
+jest.mock("./calenarTemplateRender", () => ({
+  calenarTemplateRender: jest.fn(),
+}));
 
 jest.mock("../../store/store", () => ({
   setupStore: {
@@ -19,18 +21,18 @@ jest.mock("../../store/store", () => ({
             description: "test descripton",
             id: 111,
             status: "in progress",
-            title: "test title"
+            title: "test title",
           },
           {
             date: "2022-04-12",
             description: "test descripton",
             id: 222,
             status: "done",
-            title: "test title"
-          }
+            title: "test title",
+          },
         ],
         error: "",
-        isLoading: true
+        isLoading: true,
       })
       .mockReturnValueOnce({
         tasks: [
@@ -39,20 +41,20 @@ jest.mock("../../store/store", () => ({
             description: "test descripton",
             id: 111,
             status: "in progress",
-            title: "test title"
+            title: "test title",
           },
           {
             date: "2022-04-12",
             description: "test descripton",
             id: 222,
             status: "done",
-            title: "test title"
-          }
+            title: "test title",
+          },
         ],
         error: "",
-        isLoading: false
-      })
-  }
+        isLoading: false,
+      }),
+  },
 }));
 
 describe("calendarLoader test", () => {
@@ -97,25 +99,28 @@ describe("calendarLoader test", () => {
   afterAll(() => {
     jest.useRealTimers();
   });
-  it("calenarTemplateRender rendering expect page", async () => {
+  it("calendarLoader rendering expect page", async () => {
     let calendarField = <HTMLElement>document.querySelector("#calendarField");
     const spytaskRender = jest.spyOn(taskRender, "taskRender");
-    const spycalenarTemplateRender = jest.spyOn(calendar, "calenarTemplateRender");
+    const spycalenarTemplateRender = jest.spyOn(
+      calendar,
+      "calenarTemplateRender"
+    );
     const spyFB = jest.spyOn(FB, "requestTaskFromFB").mockResolvedValue([
       {
         date: "2022-04-12",
         description: "test descripton",
         id: 111,
         status: "in progress",
-        title: "test title"
+        title: "test title",
       },
       {
         date: "2022-04-12",
         description: "test descripton",
         id: 222,
         status: "done",
-        title: "test title"
-      }
+        title: "test title",
+      },
     ]);
 
     calendarLoader();
@@ -133,15 +138,15 @@ describe("calendarLoader test", () => {
         description: "test descripton",
         id: 111,
         status: "in progress",
-        title: "test title"
+        title: "test title",
       },
       {
         date: "2022-04-12",
         description: "test descripton",
         id: 222,
         status: "done",
-        title: "test title"
-      }
+        title: "test title",
+      },
     ]);
     jest.useRealTimers();
     expect(spytaskRender).toHaveBeenCalledTimes(1);
@@ -155,19 +160,20 @@ describe("calendarLoader test", () => {
         description: "test descripton",
         id: 111,
         status: "in progress",
-        title: "test title"
+        title: "test title",
       },
       {
         date: "2022-04-12",
         description: "test descripton",
         id: 222,
         status: "done",
-        title: "test title"
-      }
+        title: "test title",
+      },
     ]);
 
     document.querySelector("#inputLine")?.dispatchEvent(new Event("change"));
     await sleep(50);
     expect(spytaskRender).toHaveBeenCalledTimes(4);
+    spyFB.mockClear();
   });
 });

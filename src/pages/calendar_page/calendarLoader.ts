@@ -4,7 +4,6 @@ import { requestTaskFromFB } from "../tasks_page/requestTaskFromFB";
 import { taskSlice } from "../../store/reducers/taskSlicer";
 import { setupStore } from "../../store/store";
 
-
 export function calendarLoader() {
   const state = setupStore.getState();
   let data = state.tasks;

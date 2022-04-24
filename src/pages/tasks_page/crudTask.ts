@@ -29,7 +29,7 @@ const newTask: (id?: number) => TaskType = (id?: number) => ({
   title: titleInput.value,
   description: taskInput.value,
   date: dateInput.value,
-  status: "in progress"
+  status: "in progress",
 });
 
 export function inputCliner() {
@@ -73,7 +73,7 @@ export function deleteTask(id: number) {
 export function updateTask(id: number) {
   function addUpdatedTask(e: SubmitEvent) {
     e.preventDefault();
-    console.log("1")
+    console.log("1");
     setupStore.dispatch(taskSlice.actions.upDateTask(newTask(id)));
     fb.updateData(newTask(id));
     taskForm?.removeEventListener("submit", addUpdatedTask);
@@ -82,7 +82,7 @@ export function updateTask(id: number) {
     addButton.style.color = "black";
     addButton.value = `add Task`;
     allTasks.checked = true;
-    console.log("2")
+    console.log("2");
     inputCliner();
   }
   const taskElList = setupStore.getState();

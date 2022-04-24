@@ -20,6 +20,6 @@ export const database = {
   ref: FBdatabase.ref,
   set: FBdatabase.set,
   remove: FBdatabase.remove,
-  update: FBdatabase.update
+  update: FBdatabase.update,
 };
-export const offline = ()=> FBdatabase.goOffline(database.db);
+export const offline = () => FBdatabase.goOffline(database.db);

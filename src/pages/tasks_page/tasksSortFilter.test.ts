@@ -2,41 +2,40 @@ import { tasksSortFilter } from "./tasksSortFilter";
 import * as store from "../../store/store";
 
 describe("tasksSortFilter test", () => {
-    let spyGetState: jest.SpyInstance;
-    let el: HTMLDivElement;
-    beforeEach(() => {
-        jest.useFakeTimers("modern");
-        jest.setSystemTime(new Date(2022, 3, 21, 0, 0, 0).valueOf());
-        spyGetState = jest
-            .spyOn(store.setupStore, "getState")
-            .mockReturnValue({
-                tasks: [
-                    {
-                        date: "2022-04-12",
-                        description: "test descripton1",
-                        id: 321,
-                        status: "done",
-                        title: "test title"
-                    }, {
-                        date: "2022-04-21",
-                        description: "test descripton2",
-                        id: 123,
-                        status: "done",
-                        title: "test title"
-                    }
-                    , {
-                        date: "2022-04-21",
-                        description: "test descripton3",
-                        id: 222,
-                        status: "in progress",
-                        title: "test title"
-                    }
-                ],
-                error: "",
-                isLoading: true
-            });
-        el = <HTMLDivElement>document.createElement("div");
-        el.innerHTML = `<div id="checkStatusBlock">
+  let spyGetState: jest.SpyInstance;
+  let el: HTMLDivElement;
+  beforeEach(() => {
+    jest.useFakeTimers("modern");
+    jest.setSystemTime(new Date(2022, 3, 21, 0, 0, 0).valueOf());
+    spyGetState = jest.spyOn(store.setupStore, "getState").mockReturnValue({
+      tasks: [
+        {
+          date: "2022-04-12",
+          description: "test descripton1",
+          id: 321,
+          status: "done",
+          title: "test title",
+        },
+        {
+          date: "2022-04-21",
+          description: "test descripton2",
+          id: 123,
+          status: "done",
+          title: "test title",
+        },
+        {
+          date: "2022-04-21",
+          description: "test descripton3",
+          id: 222,
+          status: "in progress",
+          title: "test title",
+        },
+      ],
+      error: "",
+      isLoading: true,
+    });
+    el = <HTMLDivElement>document.createElement("div");
+    el.innerHTML = `<div id="checkStatusBlock">
     <input
       type="radio"
       id="allTasks"
@@ -99,42 +98,121 @@ describe("tasksSortFilter test", () => {
 </div>
 <hr />
 <div class="taskList"></div>`;
-        document.body.appendChild(el);
-    });
+    document.body.appendChild(el);
+  });
 
-    afterEach(() => {
-        document.body.innerHTML = "";
-        jest.useRealTimers();
-        spyGetState.mockClear();
-    });
-    it("tasksSortFilter should return expected filtred tasks in state", async () => {
-        const expexctedSortState = { "error": "", "isLoading": true, "tasks": [{ "date": "2022-04-12", "description": "test descripton1", "id": 321, "status": "done", "title": "test title" }, { "date": "2022-04-21", "description": "test descripton3", "id": 222, "status": "in progress", "title": "test title" }, { "date": "2022-04-21", "description": "test descripton2", "id": 123, "status": "done", "title": "test title" }] };
-        expect(tasksSortFilter()).toStrictEqual(expexctedSortState);
-    });
-    it("tasksSortFilter should return expected filtred tasks in state with onlyDone patam", async () => {
-        const onlyDone = <HTMLInputElement>document.querySelector("#onlyDone");
-        onlyDone.checked = true;
-        const expexctedSortState = { "error": "", "isLoading": true, "tasks": [{ "date": "2022-04-12", "description": "test descripton1", "id": 321, "status": "done", "title": "test title" }, { "date": "2022-04-21", "description": "test descripton2", "id": 123, "status": "done", "title": "test title" }] };
-        expect(tasksSortFilter()).toStrictEqual(expexctedSortState);
-    });
-    it("tasksSortFilter should return expected filtred tasks in state with onlyToday patam", async () => {
-        const onlyToday = <HTMLInputElement>document.querySelector("#onlyToday input");
-        onlyToday.checked = true;
-        const expexctedSortState = { "error": "", "isLoading": true, "tasks": [{ "date": "2022-04-21", "description": "test descripton3", "id": 222, "status": "in progress", "title": "test title" }, { "date": "2022-04-21", "description": "test descripton2", "id": 123, "status": "done", "title": "test title" }] };
-        expect(tasksSortFilter()).toStrictEqual(expexctedSortState);
-    });
-    it("tasksSortFilter should return expected filtred tasks in state with fuzzyInput patam", async () => {
-        const fuzzyInput = <HTMLInputElement>document.querySelector("#fuzzyInput");
-        const fuzzySelect = <HTMLSelectElement>(
-            document.querySelector("#fuzzy select")
-        );
-        const fuzzySelectValue =
-            fuzzySelect.options[
-            (<HTMLSelectElement>document.querySelector("#fuzzy select")).selectedIndex
-            ];
-        fuzzySelectValue.value = "description";
-        fuzzyInput.value = "test descripton3";
-        const expexctedSortState = { "error": "", "isLoading": true, "tasks": [{ "date": "2022-04-21", "description": "test descripton3", "id": 222, "status": "in progress", "title": "test title" }] };
-        expect(tasksSortFilter()).toStrictEqual(expexctedSortState);
-    });
+  afterEach(() => {
+    document.body.innerHTML = "";
+    jest.useRealTimers();
+    spyGetState.mockClear();
+  });
+  it("tasksSortFilter should return expected filtred tasks in state", async () => {
+    const expexctedSortState = {
+      error: "",
+      isLoading: true,
+      tasks: [
+        {
+          date: "2022-04-12",
+          description: "test descripton1",
+          id: 321,
+          status: "done",
+          title: "test title",
+        },
+        {
+          date: "2022-04-21",
+          description: "test descripton3",
+          id: 222,
+          status: "in progress",
+          title: "test title",
+        },
+        {
+          date: "2022-04-21",
+          description: "test descripton2",
+          id: 123,
+          status: "done",
+          title: "test title",
+        },
+      ],
+    };
+    expect(tasksSortFilter()).toStrictEqual(expexctedSortState);
+  });
+  it("tasksSortFilter should return expected filtred tasks in state with onlyDone patam", async () => {
+    const onlyDone = <HTMLInputElement>document.querySelector("#onlyDone");
+    onlyDone.checked = true;
+    const expexctedSortState = {
+      error: "",
+      isLoading: true,
+      tasks: [
+        {
+          date: "2022-04-12",
+          description: "test descripton1",
+          id: 321,
+          status: "done",
+          title: "test title",
+        },
+        {
+          date: "2022-04-21",
+          description: "test descripton2",
+          id: 123,
+          status: "done",
+          title: "test title",
+        },
+      ],
+    };
+    expect(tasksSortFilter()).toStrictEqual(expexctedSortState);
+  });
+  it("tasksSortFilter should return expected filtred tasks in state with onlyToday patam", async () => {
+    const onlyToday = <HTMLInputElement>(
+      document.querySelector("#onlyToday input")
+    );
+    onlyToday.checked = true;
+    const expexctedSortState = {
+      error: "",
+      isLoading: true,
+      tasks: [
+        {
+          date: "2022-04-21",
+          description: "test descripton3",
+          id: 222,
+          status: "in progress",
+          title: "test title",
+        },
+        {
+          date: "2022-04-21",
+          description: "test descripton2",
+          id: 123,
+          status: "done",
+          title: "test title",
+        },
+      ],
+    };
+    expect(tasksSortFilter()).toStrictEqual(expexctedSortState);
+  });
+  it("tasksSortFilter should return expected filtred tasks in state with fuzzyInput patam", async () => {
+    const fuzzyInput = <HTMLInputElement>document.querySelector("#fuzzyInput");
+    const fuzzySelect = <HTMLSelectElement>(
+      document.querySelector("#fuzzy select")
+    );
+    const fuzzySelectValue =
+      fuzzySelect.options[
+        (<HTMLSelectElement>document.querySelector("#fuzzy select"))
+          .selectedIndex
+      ];
+    fuzzySelectValue.value = "description";
+    fuzzyInput.value = "test descripton3";
+    const expexctedSortState = {
+      error: "",
+      isLoading: true,
+      tasks: [
+        {
+          date: "2022-04-21",
+          description: "test descripton3",
+          id: 222,
+          status: "in progress",
+          title: "test title",
+        },
+      ],
+    };
+    expect(tasksSortFilter()).toStrictEqual(expexctedSortState);
+  });
 });

@@ -37,13 +37,13 @@ export async function app() {
 
   checkStatusBlock.addEventListener("click", () => {
     fuzzyInput.value = "";
-    drawToDoList(tasksSortFilter())
+    drawToDoList(tasksSortFilter());
   });
 
   taskForm?.addEventListener("submit", addTask);
 
   onlyToday?.addEventListener("change", () => {
     fuzzyInput.value = "";
-    drawToDoList(tasksSortFilter())
-  })
+    drawToDoList(tasksSortFilter());
+  });
 }
