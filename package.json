@@ -7,7 +7,7 @@
     "build": "webpack build --node-env production",
     "dev": "webpack serve --open --node-env development",
     "test": "jest --coverage",
-    "lint": "prettier --check . && eslint . --ext .js,.ts && ts --noEmit && stylelint \"**/*.css\"",
+    "lint": "prettier --check . && eslint . --ext .js,.ts && tsc --noEmit && stylelint \"**/*.css\"",
     "lint:fix": "prettier --write . && eslint . --fix --ext .js,.ts && stylelint \"**/*.css\" --fix",
     "tsc": "npx tsc --noEmit",
     "prepare": "husky install"
