@@ -29,7 +29,6 @@ describe("CRUD", () => {
     expect(fbEl["1649766206618"]).toStrictEqual(updetedRed);
     await testCrud.deleteData(1649766206618);
     fbEl = (await testCrud.getData()) as GetDataType;
-    console.log(fbEl);
     expect(fbEl["1649766206618"]).toBe(undefined);
   });
 });

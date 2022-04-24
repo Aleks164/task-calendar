@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">82.85% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/35</span>
+                <span class='fraction'>30/36</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">76.47% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>26/34</span>
+                <span class='fraction'>27/36</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">82.85% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/35</span>
+                <span class='fraction'>30/36</span>
             </div>
         
             
@@ -128,7 +128,39 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -172,15 +204,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">30x</span>
+<span class="cline-any cline-yes">30x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -193,7 +232,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export function taskRender(data) {
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { TaskType } from "../../types/taskType";
+&nbsp;
+interface TasksAccDone {
+  [rightD: number | string]: { done: string[] };
+}
+interface TasksAccProgress {
+  [rightD: number | string]: { progress: string[] };
+}
+interface TasksAcc {
+  [rightD: number | string]: { progress?: string[]; done?: string[] };
+}
+&nbsp;
+export function taskRender(data: TaskType[]) {
   const year = (&lt;HTMLInputElement&gt;document.querySelector("#calendarCont input"))
     .value;
   const month = parseFloat(
@@ -205,7 +257,7 @@
   const lastDay = new Date(+year, month + 1, 0).getDate(); // крайний день месяца (число (31,30...))
   const lastDayFull = new Date(+year, month, lastDay); // полная дата последнего дня месяца
   const firstDayFull = new Date(+year, month, 1); // полная дата первого дня месяца
-  const tasksAcc = {};
+  const tasksAcc = {} as TasksAcc;
   data.forEach((task) =&gt; {
     const rightDateType = new Date(task.date.replace(/-/g, ","));
     const rightM = rightDateType.getMonth();
@@ -216,7 +268,7 @@
     <span class="missing-if-branch" title="else path not taken" >E</span>if (dateCheck) {
       <span class="missing-if-branch" title="if path not taken" >I</span>if (tasksAcc[rightD] &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >task.status === "done")</span> {
 <span class="cstat-no" title="statement not covered" >        if (tasksAcc[rightD].done) {</span>
-<span class="cstat-no" title="statement not covered" >          tasksAcc[rightD].done.push(task.title);</span>
+<span class="cstat-no" title="statement not covered" >          (tasksAcc as TasksAccDone)[rightD].done.push(task.title);</span>
         } else {
 <span class="cstat-no" title="statement not covered" >          tasksAcc[rightD].done = [task.title];</span>
         }
@@ -226,7 +278,7 @@
 &nbsp;
       <span class="missing-if-branch" title="if path not taken" >I</span>if (tasksAcc[rightD] &amp;&amp; task.status !== "done") {
 <span class="cstat-no" title="statement not covered" >        if (tasksAcc[rightD].progress) {</span>
-<span class="cstat-no" title="statement not covered" >          tasksAcc[rightD].progress.push(task.title);</span>
+<span class="cstat-no" title="statement not covered" >          (tasksAcc as TasksAccProgress)[rightD].progress.push(task.title);</span>
         } else {
 <span class="cstat-no" title="statement not covered" >          tasksAcc[rightD].progress = [task.title];</span>
         }
@@ -236,25 +288,33 @@
     }
   });
 &nbsp;
-  const dateElList = document.querySelectorAll(`td[data-day]`);
-  dateElList.forEach((date: HTMLElement) =&gt; {
+  const dateElList = document.querySelectorAll(
+    `td[data-day]`
+  ) as NodeListOf&lt;HTMLElement&gt;;
+  dateElList.forEach((date) =&gt; {
     const curDay = date.dataset.day;
-    if (tasksAcc[curDay]) {
-      const greenListInner = tasksAcc[`${curDay}`].done
-        ? tasksAcc[`${curDay}`].done.map((el) =&gt; `&lt;li&gt;${el}&lt;/li&gt;`).join(" ")
-        : null;
-      const redListInner = tasksAcc[`${curDay}`].progress
-        ? tasksAcc[`${curDay}`].progress.map((el) =&gt; `&lt;li&gt;${el}&lt;/li&gt;`).join(" ")
-        : null;
-      date.innerHTML = `&lt;div data-id="${curDay}" class="taskInDate"&gt;&lt;div class="dateInCell"&gt;${curDay}&lt;/div&gt;${
-        greenListInner !== null
-          ? `&lt;div class ='greenList'&gt;&lt;/div&gt;&lt;div class='greenListTasks'&gt;&lt;ol&gt;${greenListInner}&lt;/ol&gt;&lt;/div&gt;`
-          : ""
-      }${
-        redListInner !== null
-          ? `&lt;div class ='redList'&gt;&lt;/div&gt;&lt;div class='redListTasks'&gt;&lt;ol&gt;${redListInner}&lt;/ol&gt;&lt;/div&gt;`
-          : ""
-      }&lt;/div&gt;`;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof curDay === "string") {
+      if (tasksAcc[`${curDay}`]) {
+        const greenListInner = tasksAcc[curDay].done
+          ? (tasksAcc as TasksAccDone)[curDay].done
+              .map((el) =&gt; `&lt;li&gt;${el}&lt;/li&gt;`)
+              .join(" ")
+          : null;
+        const redListInner = tasksAcc[`${curDay}`].progress
+          ? (tasksAcc as TasksAccProgress)[curDay].progress
+              .map((el) =&gt; `&lt;li&gt;${el}&lt;/li&gt;`)
+              .join(" ")
+          : null;
+        date.innerHTML = `&lt;div data-id="${curDay}" class="taskInDate"&gt;&lt;div class="dateInCell"&gt;${curDay}&lt;/div&gt;${
+          greenListInner !== null
+            ? `&lt;div class ='greenList'&gt;&lt;/div&gt;&lt;div class='greenListTasks'&gt;&lt;ol&gt;${greenListInner}&lt;/ol&gt;&lt;/div&gt;`
+            : ""
+        }${
+          redListInner !== null
+            ? `&lt;div class ='redList'&gt;&lt;/div&gt;&lt;div class='redListTasks'&gt;&lt;ol&gt;${redListInner}&lt;/ol&gt;&lt;/div&gt;`
+            : ""
+        }&lt;/div&gt;`;
+      }
     }
   });
 }
@@ -265,7 +325,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun Apr 24 2022 18:08:29 GMT+0300 (Москва, стандартное время)
+                at Sun Apr 24 2022 23:10:49 GMT+0300 (Москва, стандартное время)
             </div>
         <script src="../../prettify.js"></script>
         <script>
