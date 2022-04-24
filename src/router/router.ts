@@ -107,9 +107,17 @@ export function Router(config?: Config) {
     currentPath = location.pathname;
     handleAllListeners();
   });
+  function checkA(aElem: HTMLAreaElement) {
+    const aHref = aElem.getAttribute("href");
+    const isRoutedA = aHref === "/" || aHref === "/tasks" || aHref === "/about";
+    return isRoutedA;
+  }
 
   document.body.addEventListener("click", (event) => {
-    if (!(event.target as HTMLAreaElement).matches("a")) {
+    if (!(event.target as HTMLElement).matches("a")) {
+      return;
+    }
+    if (!checkA(event.target as HTMLAreaElement)) {
       return;
     }
     event.preventDefault();

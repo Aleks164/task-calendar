@@ -53,7 +53,7 @@ describe("router", () => {
     onLeave.mockClear();
     onBeforeEnter.mockClear();
     onEnter.mockClear();
-    jest.spyOn(global.Math, "random").mockRestore();
+    jest.spyOn(window.Math, "random").mockRestore();
   });
 
   it("routerOn is a function", () => {
