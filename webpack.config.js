@@ -22,6 +22,7 @@ module.exports = {
     client: {
       logging: "info",
     },
+    historyApiFallback: true,
   },
   output: {
     filename: "[name].bundle.[chunkhash].js",

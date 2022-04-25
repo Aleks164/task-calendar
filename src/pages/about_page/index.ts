@@ -8,7 +8,7 @@ export function aboutRender() {
   <a class="mailImg" target="_blank" href="mailto:alekseyleha@mail.ru"></a><a href="mailto:alekseyleha@mail.ru" target="_blank">alekseyleha@mail.ru</a>
   </div>
   <div class="githubImgCont">
-    <a class="githubImg" target="_blank" href="https://github.com/Aleks164"></a><a target="_blank" href="https://github.com/Aleks164">Aleks164</a>
+    <a class="githubImg" title="https://github.com/Aleks164" target="_blank" href="https://github.com/Aleks164"></a><a title="https://github.com/Aleks164" target="_blank" href="https://github.com/Aleks164">Aleks164</a>
     </div>
 </div>
 </div>
@@ -17,11 +17,12 @@ export function aboutRender() {
   The application implements:<br />
   - client routing;<br />
   - local storage - Redux/toolkit;<br />
-  - remote storage - Firebase Realtime Database<br />
+  - remote storage - Firebase Realtime Database;<br />
+  - supports parameterized links <a title="http://localhost:8000/tasks?onlyToday=true&fuzzySelect=description&fuzzyInput=task&onlyDone=true" href="http://localhost:8000/tasks?onlyToday=true&fuzzySelect=description&fuzzyInput=task&onlyDone=true">(Examle)</a>;<br />
   The application is written in TypeScript
   <p>
       More information on
-       <a href="https://github.com/Aleks164">Aleks164</a>
+       <a title="https://github.com/Aleks164/task-calendar/tree/redux/toolkit" target="_blank" href="https://github.com/Aleks164/task-calendar/tree/redux/toolkit">GitHubRepo</a>
      </p>
      </div>
 </div>`;

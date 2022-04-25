@@ -1,7 +1,7 @@
-import { app } from "./app";
+import { taskPageRender } from "./taskPageRender";
 import { curDate } from "./curDate";
 
-export function renderTasks() {
+export function tasksMain() {
   const calendarCont = <HTMLDivElement>document.querySelector("#calendarCont");
   calendarCont.innerHTML = `<div id="checkStatusBlock">
   <input
@@ -67,5 +67,5 @@ export function renderTasks() {
 <hr />
 <div class="taskList"></div>`;
 
-  app();
+  taskPageRender();
 }

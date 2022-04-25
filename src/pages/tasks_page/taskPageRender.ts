@@ -5,8 +5,9 @@ import { drawToDoList } from "./drawToDoList";
 import { requestTaskFromFB } from "./requestTaskFromFB";
 import { tasksSortFilter } from "./tasksSortFilter";
 import { selectInfoRender } from "./selectInfoRender";
+import { paramLinkLoader } from "./paramLinkLoader";
 
-export async function app() {
+export async function taskPageRender() {
   const taskForm = document.querySelector("form");
   const checkStatusBlock = <HTMLDivElement>(
     document.querySelector("#checkStatusBlock")
@@ -18,6 +19,12 @@ export async function app() {
     document.querySelector("#fuzzy select")
   );
   const fuzzyInput = <HTMLInputElement>document.querySelector("#fuzzyInput");
+
+  const params = location.search;
+
+  if (params.length > 0) {
+    paramLinkLoader(params);
+  }
 
   const state = setupStore.getState();
 
