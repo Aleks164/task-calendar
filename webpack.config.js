@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
-const PREFIX = "/webpack-gh-pages/";
+const PREFIX = "/task-calendar/";
 module.exports = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
   entry: resolve(__dirname, "./src/index"),
