@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
-
+const PREFIX = "/webpack-gh-pages/";
 module.exports = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
   entry: resolve(__dirname, "./src/index"),
@@ -17,20 +17,12 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   devServer: {
-    compress: true,
-    port: 8000,
-    client: {
-      logging: "info",
-    },
+    contentBase: resolve(__dirname, "dist"),
+    port: 9000,
     historyApiFallback: true,
   },
   output: {
-    filename: "[name].bundle.[chunkhash].js",
-    clean: true,
-    path: resolve(__dirname, "./dist"),
-    environment: {
-      arrowFunction: false,
-    },
+    publicPath: PREFIX,
   },
   module: {
     rules: [
@@ -90,7 +82,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, "./src/index.html"),
+      template: "public/index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "public/index.html",
+      filename: "404.html",
     }),
     ...(isDev
       ? [new MiniCssExtractPlugin()]

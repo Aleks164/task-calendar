@@ -1,6 +1,7 @@
 import { drawToDoList } from "./drawToDoList";
 import { TaskState, TaskType } from "../../types/taskType";
 import * as crudTask from "./crudTask";
+import * as add from "./addParamToLink";
 
 jest.mock("./crudTask", () => ({
   deleteTask: jest.fn(),
@@ -21,7 +22,9 @@ describe("test drawToDoList", () => {
 
   let el: HTMLDivElement;
   let inputLine: HTMLDivElement;
+  let spyAddParamToLink: jest.SpyInstance;
   beforeEach(() => {
+    spyAddParamToLink = jest.spyOn(add, "addParamToLink").mockImplementation();
     el = <HTMLDivElement>document.createElement("div");
     inputLine = <HTMLDivElement>document.createElement("div");
     inputLine.innerHTML = `
@@ -33,6 +36,7 @@ describe("test drawToDoList", () => {
   });
   afterEach(() => {
     document.body.innerHTML = "";
+    spyAddParamToLink.mockClear();
   });
   it("drawToDoList should draw loading page if state.isLoading = false", () => {
     const testState: TaskState = {

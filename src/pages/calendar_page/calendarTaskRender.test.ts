@@ -1,5 +1,5 @@
-import { taskRender } from "./taskRender";
-import { calenarTemplateRender } from "./calenarTemplateRender";
+import { calendarTaskRender } from "./calendarTaskRender";
+import { calenarTableRender } from "./calenarTableRender";
 import { TaskType } from "../../types/taskType";
 
 describe("taskRender test", () => {
@@ -63,9 +63,9 @@ describe("taskRender test", () => {
     const calendarField = <HTMLElement>document.querySelector("#calendarField");
 
     if (calendarField) {
-      calenarTemplateRender(calendarField, 2022, 3);
+      calenarTableRender(calendarField, 2022, 3);
 
-      taskRender(testTasks);
+      calendarTaskRender(testTasks);
       const calendarInner = calendarField.innerHTML;
       expect(calendarInner).toMatch('<td data-day="18" class="today">18</td>');
       expect(calendarInner).toMatch('<td data-day="30">30</td>');

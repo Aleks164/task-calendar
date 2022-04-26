@@ -5,7 +5,8 @@ import { drawToDoList } from "./drawToDoList";
 import { requestTaskFromFB } from "./requestTaskFromFB";
 import { tasksSortFilter } from "./tasksSortFilter";
 import { selectInfoRender } from "./selectInfoRender";
-import { paramLinkLoader } from "./paramLinkLoader";
+import { paramLinkCompiler } from "./paramLinkCompiler";
+import { applyParamToPage } from "./applyParamToPage";
 
 export async function taskPageRender() {
   const taskForm = document.querySelector("form");
@@ -23,7 +24,7 @@ export async function taskPageRender() {
   const params = location.search;
 
   if (params.length > 0) {
-    paramLinkLoader(params);
+    applyParamToPage(paramLinkCompiler(params));
   }
 
   const state = setupStore.getState();

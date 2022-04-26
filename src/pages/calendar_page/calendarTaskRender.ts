@@ -10,7 +10,7 @@ interface TasksAcc {
   [rightD: number | string]: { progress?: string[]; done?: string[] };
 }
 
-export function taskRender(data: TaskType[]) {
+export function calendarTaskRender(data: TaskType[]) {
   const year = (<HTMLInputElement>document.querySelector("#calendarCont input"))
     .value;
   const month = parseFloat(

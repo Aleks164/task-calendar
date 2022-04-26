@@ -1,5 +1,6 @@
 import { TaskState } from "../../types/taskType";
 import { deleteTask, updateTask, tugleStatusTask } from "./crudTask";
+import { addParamToLink } from "./addParamToLink";
 
 export function drawToDoList(curState: TaskState) {
   if (location.pathname === "/tasks") {
@@ -7,6 +8,7 @@ export function drawToDoList(curState: TaskState) {
     if (!curState || !curState.isLoading) {
       taskList.classList.add("loadingList");
     } else {
+      addParamToLink();
       taskList.innerHTML = `<ol id = "olList">${curState.tasks
         .map(
           (el, index) => `<li class="taskListItem ${

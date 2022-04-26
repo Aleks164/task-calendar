@@ -5,6 +5,7 @@ html {
   margin-left: auto;
   margin-right: auto;
   background-attachment: fixed;
+  padding: 0 calc(20px - (100vw - 100%)) 0 0;
 }
 
 .aboutPicture {

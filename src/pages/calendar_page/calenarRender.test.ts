@@ -1,4 +1,4 @@
-import { calenarTemplateRender } from "./calenarTemplateRender";
+import { calenarTableRender } from "./calenarTableRender";
 
 describe("calenarTemplateRender test", () => {
   let dateString;
@@ -45,7 +45,7 @@ describe("calenarTemplateRender test", () => {
     const calendarField = <HTMLElement>document.querySelector("#calendarField");
 
     if (calendarField) {
-      calenarTemplateRender(calendarField, 2022, 3);
+      calenarTableRender(calendarField, 2022, 3);
       const calendarInner = calendarField.innerHTML;
       expect(calendarInner).toMatch('<td data-day="18" class="today">18</td>');
       expect(calendarInner).toMatch('<td data-day="30">30</td>');

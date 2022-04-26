@@ -1,5 +1,5 @@
-import { taskRender } from "./taskRender";
-import { calenarTemplateRender } from "./calenarTemplateRender";
+import { calendarTaskRender } from "./calendarTaskRender";
+import { calenarTableRender } from "./calenarTableRender";
 import { requestTaskFromFB } from "../tasks_page/requestTaskFromFB";
 import { taskSlice } from "../../store/reducers/taskSlicer";
 import { setupStore } from "../../store/store";
@@ -10,13 +10,13 @@ export function calendarLoader() {
   const calendarField = <HTMLElement>(
     document.querySelector("#calendarField tbody")
   );
-  calenarTemplateRender(
+  calenarTableRender(
     calendarField,
     new Date().getFullYear(),
     new Date().getMonth()
   );
   document.querySelector("#inputLine")?.addEventListener("change", () => {
-    calenarTemplateRender(
+    calenarTableRender(
       calendarField,
       +(<HTMLInputElement>document.querySelector("#calendarCont input")).value,
       +(<HTMLSelectElement>document.querySelector("#calendarCont select"))
@@ -25,17 +25,17 @@ export function calendarLoader() {
           .selectedIndex
       ].value
     );
-    taskRender(data);
+    calendarTaskRender(data);
   });
   if (!state.isLoading) {
     calendarField.classList.add("loadingList");
     setTimeout(async () => {
       data = await requestTaskFromFB();
       setupStore.dispatch(taskSlice.actions.dateFromFBisLoaded(data));
-      taskRender(data);
+      calendarTaskRender(data);
       calendarField.classList.remove("loadingList");
     }, 500);
   } else {
-    taskRender(data);
+    calendarTaskRender(data);
   }
 }

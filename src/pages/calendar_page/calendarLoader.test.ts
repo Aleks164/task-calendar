@@ -1,12 +1,12 @@
 /* eslint-disable no-promise-executor-return */
 import { calendarLoader } from "./calendarLoader";
-import * as taskRender from "./taskRender";
-import * as calendar from "./calenarTemplateRender";
+import * as taskRender from "./calendarTaskRender";
+import * as calendar from "./calenarTableRender";
 import * as FB from "../tasks_page/requestTaskFromFB";
 
-jest.mock("./taskRender", () => ({ taskRender: jest.fn() }));
-jest.mock("./calenarTemplateRender", () => ({
-  calenarTemplateRender: jest.fn(),
+jest.mock("./calendarTaskRender", () => ({ calendarTaskRender: jest.fn() }));
+jest.mock("./calenarTableRender", () => ({
+  calenarTableRender: jest.fn(),
 }));
 
 jest.mock("../../store/store", () => ({
@@ -101,11 +101,8 @@ describe("calendarLoader test", () => {
   });
   it("calendarLoader rendering expect page", async () => {
     let calendarField = <HTMLElement>document.querySelector("#calendarField");
-    const spytaskRender = jest.spyOn(taskRender, "taskRender");
-    const spycalenarTemplateRender = jest.spyOn(
-      calendar,
-      "calenarTemplateRender"
-    );
+    const spytaskRender = jest.spyOn(taskRender, "calendarTaskRender");
+    const spycalenarTemplateRender = jest.spyOn(calendar, "calenarTableRender");
     const spyFB = jest.spyOn(FB, "requestTaskFromFB").mockResolvedValue([
       {
         date: "2022-04-12",

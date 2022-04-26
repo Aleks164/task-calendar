@@ -1,4 +1,4 @@
-export function calenarTemplateRender(
+export function calenarTableRender(
   calendarField: HTMLElement,
   year: number,
   month: number
