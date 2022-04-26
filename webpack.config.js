@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
-const PREFIX = "/task-calendar/";
+
 module.exports = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
   entry: resolve(__dirname, "./src/index"),
@@ -22,7 +22,12 @@ module.exports = {
     historyApiFallback: true,
   },
   output: {
-    publicPath: PREFIX,
+    filename: "[name].bundle.[chunkhash].js",
+    clean: true,
+    path: resolve(__dirname, "./dist"),
+    environment: {
+      arrowFunction: false,
+    },
   },
   module: {
     rules: [
