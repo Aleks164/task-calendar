@@ -109,7 +109,10 @@ export function Router(config?: Config) {
   });
   function checkA(aElem: HTMLAreaElement) {
     const aHref = aElem.getAttribute("href");
-    const isRoutedA = aHref === "/" || aHref === "/tasks" || aHref === "/about";
+    const isRoutedA =
+      aHref === "/task-calendar/" ||
+      aHref === "/task-calendar/tasks" ||
+      aHref === "/task-calendar/about";
     return isRoutedA;
   }
 
