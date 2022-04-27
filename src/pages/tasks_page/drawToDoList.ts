@@ -3,7 +3,7 @@ import { deleteTask, updateTask, tugleStatusTask } from "./crudTask";
 import { addParamToLink } from "./addParamToLink";
 
 export function drawToDoList(curState: TaskState) {
-  if (location.pathname === "/tasks") {
+  if (location.pathname === "/task-calendar/tasks") {
     const taskList = <HTMLElement>document.querySelector(".taskList");
     if (!curState || !curState.isLoading) {
       taskList.classList.add("loadingList");
