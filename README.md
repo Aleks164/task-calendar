@@ -1,5 +1,7 @@
+<img alt="Gitlab code coverage" src="https://img.shields.io/gitlab/coverage/Aleks164/task-calendar/redux/toolkit">
+
 <h2>task-calendar</h2> Deploy: https://aleks164.github.io/task-calendar/
-<h3>parameterized link:</h3> http://localhost:8000/tasks?onlyToday=true&fuzzySelect=description&fuzzyInput=task&onlyDone=true
+<h3>parameterized link:</h3> https://aleks164.github.io/task-calendar/tasks?onlyDone=true&fuzzySelect=date&fuzzyInput=27
 <h3>Задача:</h3>
 <p>Реализовать одностраничное приложение - календарь задач.</p>
 <p>Приложение должно предоставлять минимум следующие страницы:</p>
