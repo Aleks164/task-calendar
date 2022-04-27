@@ -8,8 +8,8 @@ calendarRender();
 
 const router = Router();
 
-router.on("/", calendarRender);
+router.on("/task-calendar/", calendarRender);
 
-router.on("/tasks", tasksMain);
+router.on("/task-calendar/tasks", tasksMain);
 
-router.on("/about", aboutRender);
+router.on("/task-calendar/about", aboutRender);
