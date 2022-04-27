@@ -6,7 +6,7 @@ import * as add from "./addParamToLink";
 jest.mock("./crudTask", () => ({
   deleteTask: jest.fn(),
   updateTask: jest.fn(),
-  tugleStatusTask: jest.fn()
+  tugleStatusTask: jest.fn(),
 }));
 
 describe("test drawToDoList", () => {
@@ -16,13 +16,13 @@ describe("test drawToDoList", () => {
       description: "test descripton",
       id: 1649766206618,
       status: "in progress",
-      title: "test title"
-    }
+      title: "test title",
+    },
   ];
 
   let el: HTMLDivElement;
   let inputLine: HTMLDivElement;
-  let spyaddParamToLink = jest
+  const spyaddParamToLink = jest
     .spyOn(add, "addParamToLink")
     .mockImplementation();
   beforeEach(() => {
@@ -44,7 +44,7 @@ describe("test drawToDoList", () => {
     const testState: TaskState = {
       tasks: testTasks,
       isLoading: false,
-      error: "error"
+      error: "error",
     };
     drawToDoList(testState);
     expect(
@@ -55,7 +55,7 @@ describe("test drawToDoList", () => {
     const testState: TaskState = {
       tasks: testTasks,
       isLoading: true,
-      error: "error"
+      error: "error",
     };
     const taskItem = `<ol id="olList"><li class="taskListItem redItem"><h4>test title</h4><hr><p class="descriptionPInTask">test descripton</p><p class="dataPInTask">2022.04.12</p> <div class="del_updateBlock">
           <input data-deleteid="1649766206618" class="dellBut" type="button" value="X">
@@ -72,7 +72,7 @@ describe("test drawToDoList", () => {
     const testState: TaskState = {
       tasks: testTasks,
       isLoading: true,
-      error: "error"
+      error: "error",
     };
 
     drawToDoList(testState);
@@ -92,20 +92,20 @@ describe("test drawToDoList", () => {
         description: "test descripton",
         id: 1649766206618,
         status: "done",
-        title: "test title"
+        title: "test title",
       },
       {
         date: "2022-04-12",
         description: "test descripton2",
         id: 1649766206619,
         status: "in progress",
-        title: "test title2"
-      }
+        title: "test title2",
+      },
     ];
     const testState: TaskState = {
       tasks: testTasks2,
       isLoading: true,
-      error: "error"
+      error: "error",
     };
     const taskItem = `<ol id="olList"><li class="taskListItem greenItem"><h4>test title</h4><hr><p class="descriptionPInTask">test descripton</p><p class="dataPInTask">2022.04.12</p> <div class="del_updateBlock">
           <input data-deleteid="1649766206618" class="dellBut" type="button" value="X">

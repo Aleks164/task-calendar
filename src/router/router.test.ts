@@ -8,7 +8,7 @@ let homeEl: HTMLAreaElement;
 let tasksEl: HTMLAreaElement;
 let aboutEl: HTMLAreaElement;
 let el: HTMLDivElement;
-describe.skip("router", () => {
+describe("router", () => {
   const onLeave = jest.fn().mockImplementation(
     () =>
       new Promise((resolve) => {
@@ -34,11 +34,7 @@ describe.skip("router", () => {
       })
   );
   beforeEach(() => {
-    homeEl = <HTMLAreaElement>el.querySelector("#home");
-    tasksEl = <HTMLAreaElement>el.querySelector("#tasks");
-    aboutEl = <HTMLAreaElement>el.querySelector("#about");
     el = document.createElement("div");
-    document.body.appendChild(el);
     el.innerHTML = `
       <nav>
         <a id="home" href="/">Home</a>
@@ -47,6 +43,11 @@ describe.skip("router", () => {
         <a id="about-us" href="/about/us">About / Us</a>
       </nav>
 `;
+    document.body.appendChild(el);
+
+    homeEl = <HTMLAreaElement>el.querySelector("#home");
+    tasksEl = <HTMLAreaElement>el.querySelector("#tasks");
+    aboutEl = <HTMLAreaElement>el.querySelector("#about");
     jest.spyOn(window.Math, "random").mockReturnValue(0.123);
   });
 
@@ -77,7 +78,7 @@ describe.skip("router", () => {
     expect(onEnter).lastCalledWith({
       currentPath: "/tasks",
       previousPath: "/",
-      state: 0.123
+      state: 0.123,
     });
   });
 
@@ -113,7 +114,7 @@ describe.skip("router", () => {
     expect(onEnter).lastCalledWith({
       currentPath: "/tasks",
       previousPath: "/",
-      state: 0.123
+      state: 0.123,
     });
 
     homeEl?.dispatchEvent(new Event("click", { bubbles: true }));
@@ -122,13 +123,13 @@ describe.skip("router", () => {
     expect(onEnter).lastCalledWith({
       currentPath: "/",
       previousPath: "/tasks",
-      state: 0.123
+      state: 0.123,
     });
 
     expect(onLeave).lastCalledWith({
       currentPath: "/",
       previousPath: "/tasks",
-      state: 0.123
+      state: 0.123,
     });
     aboutEl?.dispatchEvent(new Event("click", { bubbles: true }));
     await sleep();
@@ -136,7 +137,7 @@ describe.skip("router", () => {
     expect(onBeforeEnter).lastCalledWith({
       currentPath: "/about",
       previousPath: "/",
-      state: 0.123
+      state: 0.123,
     });
   });
 });
