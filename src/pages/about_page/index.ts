@@ -18,7 +18,7 @@ export function aboutRender() {
   - client routing;<br />
   - local storage - Redux/toolkit;<br />
   - remote storage - Firebase Realtime Database;<br />
-  - supports parameterized links <a title="https://aleks164.github.io/task-calendar/tasks?onlyDone=true&fuzzySelect=date&fuzzyInput=27" href="https://aleks164.github.io/task-calendar/tasks?onlyDone=true&fuzzySelect=date&fuzzyInput=27">(Examle)</a>;<br />
+  - supports parameterized links <a title="https://aleks164.github.io/task-calendar/tasks?onlyDone=true&fuzzySelect=date&fuzzyInput=27" target="_blank" href="https://aleks164.github.io/task-calendar/tasks?onlyDone=true&fuzzySelect=date&fuzzyInput=27">(Examle)</a>;<br />
   The application is written in TypeScript
   <p>
       More information on
