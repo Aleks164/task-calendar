@@ -28,12 +28,15 @@ export function calendarLoader() {
     calendarTaskRender(data);
   });
   if (!state.isLoading) {
-    calendarField.classList.add("loadingList");
+    const loadingAnimationEl = document.createElement("div");
+    loadingAnimationEl.classList.add("loadingList");
+    loadingAnimationEl.innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+    calendarField.appendChild(loadingAnimationEl);
     setTimeout(async () => {
       data = await requestTaskFromFB();
       setupStore.dispatch(taskSlice.actions.dateFromFBisLoaded(data));
       calendarTaskRender(data);
-      calendarField.classList.remove("loadingList");
+      calendarField.removeChild(loadingAnimationEl);
     }, 500);
   } else {
     calendarTaskRender(data);

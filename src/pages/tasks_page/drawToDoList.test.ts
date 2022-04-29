@@ -47,9 +47,7 @@ describe("test drawToDoList", () => {
       error: "error",
     };
     drawToDoList(testState);
-    expect(
-      document.querySelector(".taskList")?.classList.contains("loadingList")
-    ).toBeTruthy();
+    expect(!!document.querySelector(".loadingList")).toBeTruthy();
   });
   it("drawToDoList should draw a tasks list based on incoming state", () => {
     const testState: TaskState = {

@@ -4,9 +4,12 @@ import { addParamToLink } from "./addParamToLink";
 
 export function drawToDoList(curState: TaskState) {
   if (location.pathname === "/task-calendar/tasks") {
+    const loadingAnimationEl = document.createElement("div");
     const taskList = <HTMLElement>document.querySelector(".taskList");
     if (!curState || !curState.isLoading) {
-      taskList.classList.add("loadingList");
+      loadingAnimationEl.classList.add("loadingList");
+      loadingAnimationEl.innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+      taskList.appendChild(loadingAnimationEl);
     } else {
       addParamToLink();
       taskList.innerHTML = `<ol id = "olList">${curState.tasks
@@ -50,7 +53,7 @@ export function drawToDoList(curState: TaskState) {
           tugleStatusTask(id);
         });
       });
-      taskList.classList.remove("loadingList");
+      taskList.removeChild(loadingAnimationEl);
     }
   }
 }

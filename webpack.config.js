@@ -17,12 +17,12 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   devServer: {
-    contentBase: resolve(__dirname, "dist"),
     port: 9000,
     historyApiFallback: true,
   },
   output: {
-    publicPath: PREFIX,
+    publicPath: isDev ? "/" : PREFIX,
+
   },
   module: {
     rules: [
@@ -35,40 +35,13 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        exclude: /\.module\.css$/i,
-        use: [
-          isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                mode: "icss",
-                localIdentName: "[name]___[hash:base64:5]",
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.module\.css$/,
-        use: [
-          isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                mode: "local",
-                localIdentName: "[name]___[hash:base64:5]",
-              },
-            },
-          },
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
         generator: {
-          filename: "static/[hash][ext]",
+          filename: "./images/[contenthash][ext]",
         },
       },
       {
@@ -82,19 +55,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: resolve(__dirname, "src/index.html"),
     }),
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "404.html",
-    }),
-    ...(isDev
-      ? [new MiniCssExtractPlugin()]
-      : [
-        new MiniCssExtractPlugin({
-          filename: "[name].[contenthash].css",
-          chunkFilename: "[name].[contenthash].css",
-        }),
-      ]),
+    new MiniCssExtractPlugin(),
   ],
 };

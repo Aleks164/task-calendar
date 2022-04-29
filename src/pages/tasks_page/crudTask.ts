@@ -12,6 +12,8 @@ let dateInput: HTMLInputElement;
 let taskForm: HTMLFormElement;
 let addButton: HTMLInputElement;
 let allTasks: HTMLInputElement;
+let loadingAnimationEl: HTMLElement;
+let taskList: HTMLElement;
 
 const fb = new Crud();
 
@@ -22,6 +24,13 @@ function upDateLinks() {
   taskForm = <HTMLFormElement>document.querySelector("form");
   addButton = <HTMLInputElement>document.querySelector(".addButton");
   allTasks = <HTMLInputElement>document.querySelector("#allTasks");
+  loadingAnimationEl = <HTMLElement>document.createElement("div");
+  taskList = <HTMLElement>document.querySelector(".taskList");
+}
+function addAnimation() {
+  loadingAnimationEl.classList.add("loadingList");
+  loadingAnimationEl.innerHTML = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+  taskList.appendChild(loadingAnimationEl);
 }
 
 const newTask: (id?: number) => TaskType = (id?: number) => ({
@@ -47,43 +56,48 @@ export async function drawTasksList() {
   drawToDoList(tasksSortFilter());
 }
 
-export function addTask(e: SubmitEvent) {
+export async function addTask(e: SubmitEvent) {
   upDateLinks();
   e.preventDefault();
+  addAnimation();
 
   if (titleInput.value === "") {
     titleInput.focus();
   } else if (taskInput.value === "") {
     taskInput.focus();
   } else {
+    await fb.createData(newTask());
     setupStore.dispatch(taskSlice.actions.addTask(newTask()));
-    fb.createData(newTask());
     inputCliner();
     allTasks.checked = true;
+    taskList.removeChild(loadingAnimationEl);
   }
 }
 
-export function deleteTask(id: number) {
-  setupStore.dispatch(taskSlice.actions.dellTask(id));
+export async function deleteTask(id: number) {
+  addAnimation();
   inputCliner();
   allTasks.checked = true;
-  fb.deleteData(id);
+  await fb.deleteData(id);
+  setupStore.dispatch(taskSlice.actions.dellTask(id));
+  taskList.removeChild(loadingAnimationEl);
 }
 
 export function updateTask(id: number) {
-  function addUpdatedTask(e: SubmitEvent) {
+  async function addUpdatedTask(e: SubmitEvent) {
     e.preventDefault();
-    console.log("1");
+
+    addAnimation();
+    await fb.updateData(newTask(id));
     setupStore.dispatch(taskSlice.actions.upDateTask(newTask(id)));
-    fb.updateData(newTask(id));
     taskForm?.removeEventListener("submit", addUpdatedTask);
     taskForm?.addEventListener("submit", addTask);
     addButton.style.backgroundColor = "";
     addButton.style.color = "black";
     addButton.value = `add Task`;
-    allTasks.checked = true;
-    console.log("2");
     inputCliner();
+    allTasks.checked = true;
+    taskList.removeChild(loadingAnimationEl);
   }
   const taskElList = setupStore.getState();
   const updateEl = taskElList.tasks.find((el) => el.id === id);
@@ -103,12 +117,14 @@ export function updateTask(id: number) {
   taskForm?.addEventListener("submit", addUpdatedTask);
 }
 
-export function tugleStatusTask(id: number) {
+export async function tugleStatusTask(id: number) {
   const taskElList = setupStore.getState();
   const tugleStatusEl = taskElList.tasks.find((el) => el.id === id);
   const toglStatus = tugleStatusEl?.status === "done" ? "in progress" : "done";
   const updatedTask = { ...tugleStatusEl, status: toglStatus } as TaskType;
+  addAnimation();
+  await fb.updateData(updatedTask);
   setupStore.dispatch(taskSlice.actions.upDateTask(updatedTask));
-  fb.updateData(updatedTask);
+  taskList.removeChild(loadingAnimationEl);
   inputCliner();
 }
