@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>10/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>10/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -122,8 +122,7 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,13 +142,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,29 +155,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,8 +185,8 @@
 import { database } from "./fb_init/initialFB";
 import { TaskType } from "../types/taskType";
 &nbsp;
-interface GetDataType {
-  [id: string]: TaskType
+export interface GetDataType {
+  [id: string]: TaskType;
 }
 &nbsp;
 export interface CRUDType {
@@ -201,45 +199,44 @@ export interface CRUDType {
   updateData(updatingObject: TaskType): Promise&lt;string&gt;;
 }
 &nbsp;
-&nbsp;
 export class Crud implements CRUDType {
-<span class="fstat-no" title="function not covered" >  as</span>ync getData(): Promise&lt;GetDataType | string&gt; {
-    const dbref = <span class="cstat-no" title="statement not covered" >database.ref(database.db);</span>
-<span class="cstat-no" title="statement not covered" >    return database</span>
+  async getData(): Promise&lt;GetDataType | string&gt; {
+    const dbref = database.ref(database.db);
+    return database
       .get(database.child(dbref, `tasks/`))
-      .then(<span class="fstat-no" title="function not covered" >(s</span>napshot) =&gt; {
-<span class="cstat-no" title="statement not covered" >        if (snapshot.exists()) {</span>
-<span class="cstat-no" title="statement not covered" >          return snapshot.val();</span>
+      .then((snapshot) =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (snapshot.exists()) {
+          return snapshot.val();
         }
 <span class="cstat-no" title="statement not covered" >        return `some problem with request data`;</span>
       })
       .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; <span class="cstat-no" title="statement not covered" >error)</span>;
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync createData(creatingObject: TaskType): Promise&lt;string&gt; {
-<span class="cstat-no" title="statement not covered" >    return database</span>
+  async createData(creatingObject: TaskType): Promise&lt;string&gt; {
+    return database
       .set(
         database.ref(database.db, `tasks/${creatingObject.id}`),
         creatingObject
       )
-      .then(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >creatingObject)</span>
+      .then(() =&gt; creatingObject)
       .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; <span class="cstat-no" title="statement not covered" >error)</span>;
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync deleteData(id: number): Promise&lt;string&gt; {
-<span class="cstat-no" title="statement not covered" >    return database</span>
+  async deleteData(id: number): Promise&lt;string&gt; {
+    return database
       .set(database.ref(database.db, `tasks/${id}`), null)
-      .then(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >null)</span>
+      .then(() =&gt; null)
       .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; <span class="cstat-no" title="statement not covered" >error)</span>;
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync updateData(updatingObject: TaskType): Promise&lt;string&gt; {
-<span class="cstat-no" title="statement not covered" >    return database</span>
+  async updateData(updatingObject: TaskType): Promise&lt;string&gt; {
+    return database
       .update(
         database.ref(database.db, `tasks/${updatingObject.id}`),
         updatingObject
       )
-      .then(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >updatingObject)</span>
+      .then(() =&gt; updatingObject)
       .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; <span class="cstat-no" title="statement not covered" >error)</span>;
   }
 }
@@ -250,7 +247,7 @@ export class Crud implements CRUDType {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun Apr 24 2022 01:05:13 GMT+0400 (GMT+04:00)
+                at Sun May 01 2022 02:13:23 GMT+0400 (GMT+04:00)
             </div>
         <script src="../prettify.js"></script>
         <script>

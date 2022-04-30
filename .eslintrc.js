@@ -26,7 +26,7 @@ module.exports = {
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "no-useless-escape": "off",
-    "no-param-reassign": "warn",
+    "no-param-reassign": "off",
     "class-methods-use-this": "warn",
     "no-new": "warn",
     "jest/no-conditional-expect": "off",

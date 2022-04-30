@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/tasks_page/tasksSortFilter.ts</title>
+    <title>Code coverage report for pages/tasks_page/paramLinkCompiler.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/tasks_page</a> tasksSortFilter.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/tasks_page</a> paramLinkCompiler.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/22</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -96,80 +96,71 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import FuzzySearch from "fuzzy-search";
-import { curDate } from "./curDate";
-import { setupStore } from "../../store/store";
-import { TaskType } from "../../types/taskType";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// interface ParamList {
+//     onlyToday: boolean | undefined;
+//     fuzzySelect: "description" | "title" | "date" | undefined;
+//     fuzzyInput: string | undefined;
+//     allTasks: boolean | undefined;
+//     onlyDone: boolean | undefined;
+//     inProgress: boolean | undefined;
+// }
 &nbsp;
-export function tasksSortFilter() {
-  const curState = setupStore.getState();
-  const onlyDone = &lt;HTMLInputElement&gt;document.querySelector("#onlyDone");
-  const inProgress = &lt;HTMLInputElement&gt;document.querySelector("#inProgress");
-  const onlyToday = &lt;HTMLInputElement&gt;(
-    document.querySelector("#onlyToday input")
-  );
-  const fuzzyInput = &lt;HTMLInputElement&gt;document.querySelector("#fuzzyInput");
+// type Keys = keyof ParamList;
+// type Value = ParamList[keyof ParamList];
+// type ParamKeyValueArr = [Keys, Value];
 &nbsp;
-  let tasks = [...curState.tasks].sort((a, b) =&gt; Number(b.id) - Number(a.id));
+export interface ParamList {
+  [param: string]: boolean | undefined | string;
+  onlyToday: boolean | undefined;
+  fuzzySelect: "description" | "title" | "date" | undefined;
+  fuzzyInput: string | undefined;
+  allTasks: boolean | undefined;
+  onlyDone: boolean | undefined;
+  inProgress: boolean | undefined;
+}
 &nbsp;
-  if (onlyToday.checked) tasks = tasks.filter((el) =&gt; el.date === curDate());
-  if (onlyDone.checked) tasks = tasks.filter((el) =&gt; el.status === "done");
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (inProgress.checked) <span class="cstat-no" title="statement not covered" >tasks = tasks.filter(<span class="fstat-no" title="function not covered" >(e</span>l) =&gt; <span class="cstat-no" title="statement not covered" >el.status !== "done")</span>;</span>
-&nbsp;
-  if (fuzzyInput.value !== "") {
-    const fuzzySelect = &lt;HTMLSelectElement&gt;(
-      document.querySelector("#fuzzy select")
-    );
-    const fuzzySelectValue =
-      fuzzySelect.options[
-        (&lt;HTMLSelectElement&gt;document.querySelector("#fuzzy select"))
-          .selectedIndex
-      ].value;
-    const fuzzy = new FuzzySearch(tasks, [fuzzySelectValue], {
-      caseSensitive: true,
-    });
-    tasks = fuzzy.search(fuzzyInput.value) as TaskType[];
-  }
-  return { ...curState, tasks };
+export function paramLinkCompiler(params: string) {
+  const paramList = {} as ParamList;
+  const splitParams = params.substring(1).split("&amp;");
+  splitParams.forEach((param: string) =&gt; {
+    const paramKeyValueArr = param.split("=");
+    const [keyOfParam, valueOfParam] = paramKeyValueArr;
+    paramList[keyOfParam] = valueOfParam;
+  });
+  return paramList;
 }
 &nbsp;</pre></td></tr></table></pre>
 

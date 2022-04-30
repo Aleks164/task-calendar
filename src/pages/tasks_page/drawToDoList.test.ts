@@ -1,11 +1,12 @@
 import { drawToDoList } from "./drawToDoList";
 import { TaskState, TaskType } from "../../types/taskType";
 import * as crudTask from "./crudTask";
+import * as add from "./addParamToLink";
 
 jest.mock("./crudTask", () => ({
   deleteTask: jest.fn(),
   updateTask: jest.fn(),
-  tugleStatusTask: jest.fn()
+  tugleStatusTask: jest.fn(),
 }));
 
 describe("test drawToDoList", () => {
@@ -16,12 +17,16 @@ describe("test drawToDoList", () => {
       id: 1649766206618,
       status: "in progress",
       title: "test title",
-    }
+    },
   ];
 
   let el: HTMLDivElement;
   let inputLine: HTMLDivElement;
+  const spyaddParamToLink = jest
+    .spyOn(add, "addParamToLink")
+    .mockImplementation();
   beforeEach(() => {
+    history.pushState({}, "", "/task-calendar/tasks");
     el = <HTMLDivElement>document.createElement("div");
     inputLine = <HTMLDivElement>document.createElement("div");
     inputLine.innerHTML = `
@@ -33,6 +38,7 @@ describe("test drawToDoList", () => {
   });
   afterEach(() => {
     document.body.innerHTML = "";
+    spyaddParamToLink.mockClear();
   });
   it("drawToDoList should draw loading page if state.isLoading = false", () => {
     const testState: TaskState = {
@@ -41,7 +47,7 @@ describe("test drawToDoList", () => {
       error: "error",
     };
     drawToDoList(testState);
-    expect(document.querySelector(".taskList")?.classList.contains("loadingList")).toBeTruthy();
+    expect(!!document.querySelector(".loadingList")).toBeTruthy();
   });
   it("drawToDoList should draw a tasks list based on incoming state", () => {
     const testState: TaskState = {
@@ -70,7 +76,9 @@ describe("test drawToDoList", () => {
     drawToDoList(testState);
     document.querySelector(`.dellBut`)?.dispatchEvent(new Event("click"));
     expect(spyDeleteTask).toHaveBeenCalledWith(1649766206618);
-    document.querySelector(`[data-updateid]`)?.dispatchEvent(new Event("click"));
+    document
+      .querySelector(`[data-updateid]`)
+      ?.dispatchEvent(new Event("click"));
     expect(spyUpdateTask).toHaveBeenCalledWith(1649766206618);
     document.querySelector(`[data-tugleid]`)?.dispatchEvent(new Event("click"));
     expect(spyTugleStatusTask).toHaveBeenCalledWith(1649766206618);
@@ -90,7 +98,7 @@ describe("test drawToDoList", () => {
         id: 1649766206619,
         status: "in progress",
         title: "test title2",
-      }
+      },
     ];
     const testState: TaskState = {
       tasks: testTasks2,

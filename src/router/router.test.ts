@@ -1,26 +1,14 @@
-import { Router} from "./router";
+import { Router } from "./router";
 
 const sleep = (ms = 100) =>
   new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
-
+let homeEl: HTMLAreaElement;
+let tasksEl: HTMLAreaElement;
+let aboutEl: HTMLAreaElement;
+let el: HTMLDivElement;
 describe("router", () => {
-  const el = document.createElement("div");
-  document.body.appendChild(el);
-
-  el.innerHTML = `
-      <nav>
-        <a id="home" href="/">Home</a>
-        <a id="contacts" href="/contacts">Contacts</a>
-        <a id="about" href="/about">About</a>
-        <a id="about-us" href="/about/us">About / Us</a>
-      </nav>
-`;
-  const homeEl = el.querySelector("#home");
-  const contactsEl = el.querySelector("#contacts");
-  const aboutEl = el.querySelector("#about");
-
   const onLeave = jest.fn().mockImplementation(
     () =>
       new Promise((resolve) => {
@@ -46,20 +34,35 @@ describe("router", () => {
       })
   );
   beforeEach(() => {
+    el = document.createElement("div");
+    el.innerHTML = `
+      <nav>
+        <a id="home" href="/task-calendar/">Home</a>
+        <a id="tasks" href="/task-calendar/tasks">tasks</a>
+        <a id="about" href="/task-calendar/about">About</a>
+        <a id="about-us" href="/task-calendar/about/us">About / Us</a>
+      </nav>
+`;
+    document.body.appendChild(el);
+
+    homeEl = <HTMLAreaElement>el.querySelector("#home");
+    tasksEl = <HTMLAreaElement>el.querySelector("#tasks");
+    aboutEl = <HTMLAreaElement>el.querySelector("#about");
     jest.spyOn(window.Math, "random").mockReturnValue(0.123);
   });
 
   afterEach(() => {
+    document.body.innerHTML = "";
     onLeave.mockClear();
     onBeforeEnter.mockClear();
     onEnter.mockClear();
-    jest.spyOn(global.Math, "random").mockRestore();
+    jest.spyOn(window.Math, "random").mockRestore();
   });
 
   it("routerOn is a function", () => {
     const router = Router();
     const routerOn = router.on(
-      "/",
+      "/task-calendar/",
       undefined,
       undefined,
       undefined
@@ -67,11 +70,11 @@ describe("router", () => {
     expect(routerOn).toBeInstanceOf(Function);
   });
 
-  it("should invoke expected hooks on contacts click with onEnter", async () => {
+  it("should invoke expected hooks on tasks click with onEnter", async () => {
     const router = Router();
 
     router.on(
-      (path) => path === "/contacts",
+      (path) => path === "/task-calendar/tasks",
       onEnter,
       undefined,
       undefined
@@ -80,11 +83,11 @@ describe("router", () => {
     await sleep();
     homeEl?.dispatchEvent(new Event("click", { bubbles: true }));
     await sleep();
-    contactsEl?.dispatchEvent(new Event("click", { bubbles: true }));
+    tasksEl?.dispatchEvent(new Event("click", { bubbles: true }));
     await sleep();
     expect(onEnter).lastCalledWith({
-      currentPath: "/contacts",
-      previousPath: "/",
+      currentPath: "/task-calendar/tasks",
+      previousPath: "/task-calendar/",
       state: 0.123,
     });
   });
@@ -92,20 +95,15 @@ describe("router", () => {
   it("should invoke expected hooks with hashApi", async () => {
     const router = Router({ apiHashOn: true });
     router.on(
-      (path) => path === "/contacts",
+      (path) => path === "/task-calendar/tasks",
       onEnter,
       onLeave,
       undefined
     );
-    router.on(
-      /\/about/,
-      undefined,
-      undefined,
-      onBeforeEnter
-    );
+    router.on(/\/about/, undefined, undefined, onBeforeEnter);
 
     await sleep();
-    contactsEl?.dispatchEvent(new Event("click", { bubbles: true }));
+    tasksEl?.dispatchEvent(new Event("click", { bubbles: true }));
     await sleep();
 
     aboutEl?.dispatchEvent(new Event("click", { bubbles: true }));
@@ -118,34 +116,24 @@ describe("router", () => {
 
   it("expected hooks should be called at certain clicks", async () => {
     const router = Router();
+    router.on("/task-calendar/", onEnter, undefined, undefined);
     router.on(
-      "/",
-      onEnter,
-      undefined,
-      undefined
-    );
-    router.on(
-      (path) => path === "/contacts",
+      (path) => path === "/task-calendar/tasks",
       onEnter,
       onLeave,
       undefined
     );
-    router.on(
-      /\/about/,
-      undefined,
-      undefined,
-      onBeforeEnter
-    );
+    router.on(/\/about/, undefined, undefined, onBeforeEnter);
 
     homeEl?.dispatchEvent(new Event("click", { bubbles: true }));
     await sleep();
 
-    contactsEl?.dispatchEvent(new Event("click", { bubbles: true }));
+    tasksEl?.dispatchEvent(new Event("click", { bubbles: true }));
     await sleep();
 
     expect(onEnter).lastCalledWith({
-      currentPath: "/contacts",
-      previousPath: "/",
+      currentPath: "/task-calendar/tasks",
+      previousPath: "/task-calendar/",
       state: 0.123,
     });
 
@@ -153,22 +141,22 @@ describe("router", () => {
     await sleep();
 
     expect(onEnter).lastCalledWith({
-      currentPath: "/",
-      previousPath: "/contacts",
+      currentPath: "/task-calendar/",
+      previousPath: "/task-calendar/tasks",
       state: 0.123,
     });
 
     expect(onLeave).lastCalledWith({
-      currentPath: "/",
-      previousPath: "/contacts",
+      currentPath: "/task-calendar/",
+      previousPath: "/task-calendar/tasks",
       state: 0.123,
     });
     aboutEl?.dispatchEvent(new Event("click", { bubbles: true }));
     await sleep();
 
     expect(onBeforeEnter).lastCalledWith({
-      currentPath: "/about",
-      previousPath: "/",
+      currentPath: "/task-calendar/about",
+      previousPath: "/task-calendar/",
       state: 0.123,
     });
   });

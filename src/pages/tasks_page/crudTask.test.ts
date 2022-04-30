@@ -16,9 +16,7 @@ let spyDateNow: jest.SpyInstance;
 let spyDispatch: jest.SpyInstance;
 let spyGetState: jest.SpyInstance;
 
-const sleep = (x: number) => new Promise((resolve) => setTimeout(resolve, x));
-
-describe("test drawToDoList", () => {
+describe("test crudTask function", () => {
   beforeEach(() => {
     spyDate = jest.spyOn(mockDate, "curDate").mockReturnValue("2022-04-21");
     spyDateNow = jest.spyOn(Date, "now").mockReturnValue(123);
@@ -107,7 +105,7 @@ describe("test drawToDoList", () => {
     spyDateNow.mockClear();
     spyDispatch.mockClear();
   });
-  it("test addTask function Crud", () => {
+  it("test addTask function Crud", async () => {
     const expextReducerArg = {
       date: "2022-04-21",
       description: "taskInput",
@@ -120,12 +118,12 @@ describe("test drawToDoList", () => {
       .spyOn(reducers.taskSlice.actions, "addTask")
       .mockReturnValue({ payload: expextReducerArg, type: "addTask" });
 
-    const submitEvent = { preventDefault() { } };
+    const submitEvent = { preventDefault() {} };
     const titleInput = <HTMLInputElement>document.querySelector(".titleInput");
     const taskInput = <HTMLInputElement>document.querySelector(".taskInput");
     titleInput.value = "titleInput";
     taskInput.value = "taskInput";
-    addTask(submitEvent as SubmitEvent);
+    await addTask(submitEvent as SubmitEvent);
     expect(spyDispatch).lastCalledWith({
       payload: expextReducerArg,
       type: "addTask",
@@ -134,12 +132,12 @@ describe("test drawToDoList", () => {
     expect(Crud).toHaveBeenCalledTimes(1);
     spyReducers.mockClear();
   });
-  it("test deleteTask function Crud", () => {
+  it("test deleteTask function Crud", async () => {
     const spyReducers = jest
       .spyOn(reducers.taskSlice.actions, "dellTask")
       .mockReturnValue({ payload: 123, type: "dellTask" });
 
-    deleteTask(123);
+    await deleteTask(123);
     expect(spyDispatch).lastCalledWith({ payload: 123, type: "dellTask" });
     expect(spyReducers).lastCalledWith(123);
     expect(Crud).toHaveBeenCalledTimes(1);
@@ -157,42 +155,12 @@ describe("test drawToDoList", () => {
       .spyOn(reducers.taskSlice.actions, "upDateTask")
       .mockReturnValue({ payload: expextReducerArg, type: "upDateTask" });
 
-    const fbData = {
-      "200": {
-        date: "2022-04-22",
-        description: "Some task",
-        id: 200,
-        status: "in progress",
-        title: "taskFromBase",
-      } as TaskType,
-    };
-    const spyGetTask = jest
-      .spyOn(Crud.prototype, "updateData")
-      .mockResolvedValue("updateData");
-    const expectedTask = [
-      {
-        date: "2022-04-22",
-        description: "Some task",
-        id: 200,
-        status: "in progress",
-        title: "taskFromBase",
-      },
-    ];
-
     updateTask(123);
 
     expect(spyGetState).toHaveBeenCalledTimes(1);
-    const taskForm = <HTMLFormElement>document.querySelector("form");
-    taskForm?.addEventListener("submit", addTask);
-    taskForm.dispatchEvent(new Event("submit"));
-    await sleep(50)
-    expect(spyReducers).lastCalledWith(expextReducerArg);
-    expect(spyDispatch).lastCalledWith({ payload: expextReducerArg, type: "upDateTask" });
-    expect(Crud).toHaveBeenCalledTimes(1);
-
     spyReducers.mockClear();
   });
-  it("test tugleStatusTask function Crud", () => {
+  it("test tugleStatusTask function Crud", async () => {
     const expextReducerArg = {
       date: "2022-04-21",
       description: "taskInput",
@@ -204,7 +172,7 @@ describe("test drawToDoList", () => {
       .spyOn(reducers.taskSlice.actions, "upDateTask")
       .mockReturnValue({ payload: expextReducerArg, type: "upDateTask" });
 
-    tugleStatusTask(123);
+    await tugleStatusTask(123);
     expect(spyDispatch).lastCalledWith({
       payload: expextReducerArg,
       type: "upDateTask",
