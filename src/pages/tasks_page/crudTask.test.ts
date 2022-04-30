@@ -1,10 +1,6 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-promise-executor-return */
-import {
-  addTask,
-  deleteTask,
-  updateTask,
-  tugleStatusTask
-} from "./crudTask";
+import { addTask, deleteTask, updateTask, tugleStatusTask } from "./crudTask";
 
 import * as store from "../../store/store";
 import * as reducers from "../../store/reducers/taskSlicer";
@@ -30,21 +26,19 @@ describe("test drawToDoList", () => {
     spyDispatch = jest
       .spyOn(store.setupStore, "dispatch")
       .mockReturnValue("taskItem");
-    spyGetState = jest
-      .spyOn(store.setupStore, "getState")
-      .mockReturnValue({
-        tasks: [
-          {
-            date: "2022-04-12",
-            description: "test descripton",
-            id: 222,
-            status: "done",
-            title: "test title"
-          }
-        ],
-        error: "",
-        isLoading: true
-      });
+    spyGetState = jest.spyOn(store.setupStore, "getState").mockReturnValue({
+      tasks: [
+        {
+          date: "2022-04-12",
+          description: "test descripton",
+          id: 222,
+          status: "done",
+          title: "test title",
+        },
+      ],
+      error: "",
+      isLoading: true,
+    });
 
     el = <HTMLDivElement>document.createElement("div");
     el.innerHTML = `<div id="checkStatusBlock">
@@ -109,23 +103,33 @@ describe("test drawToDoList", () => {
   });
   afterEach(() => {
     document.body.innerHTML = "";
-    spyDate.mockClear(); spyDateNow.mockClear(); spyDispatch.mockClear();
+    spyDate.mockClear();
+    spyDateNow.mockClear();
+    spyDispatch.mockClear();
   });
   it("test addTask function Crud", () => {
-    const expextReducerArg = { "date": "2022-04-21", "description": "taskInput", "id": 123, "status": "in progress", "title": "titleInput" } as TaskType;
+    const expextReducerArg = {
+      date: "2022-04-21",
+      description: "taskInput",
+      id: 123,
+      status: "in progress",
+      title: "titleInput",
+    } as TaskType;
 
     const spyReducers = jest
       .spyOn(reducers.taskSlice.actions, "addTask")
       .mockReturnValue({ payload: expextReducerArg, type: "addTask" });
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const submitEvent = { preventDefault() { } };
     const titleInput = <HTMLInputElement>document.querySelector(".titleInput");
     const taskInput = <HTMLInputElement>document.querySelector(".taskInput");
     titleInput.value = "titleInput";
     taskInput.value = "taskInput";
     addTask(submitEvent as SubmitEvent);
-    expect(spyDispatch).lastCalledWith({ payload: expextReducerArg, type: "addTask" });
+    expect(spyDispatch).lastCalledWith({
+      payload: expextReducerArg,
+      type: "addTask",
+    });
     expect(spyReducers).lastCalledWith(expextReducerArg);
     expect(Crud).toHaveBeenCalledTimes(1);
     spyReducers.mockClear();
@@ -142,34 +146,69 @@ describe("test drawToDoList", () => {
     spyReducers.mockClear();
   });
   it("test updateTask function Crud", async () => {
-    const expextReducerArg = { "date": "2022-04-21", "description": "taskInput", "id": 123, "status": "in progress", "title": "titleInput" } as TaskType;
+    const expextReducerArg = {
+      date: "2022-04-21",
+      description: "taskInput",
+      id: 123,
+      status: "in progress",
+      title: "titleInput",
+    } as TaskType;
     const spyReducers = jest
       .spyOn(reducers.taskSlice.actions, "upDateTask")
       .mockReturnValue({ payload: expextReducerArg, type: "upDateTask" });
-    const taskForm = <HTMLFormElement>document.querySelector("form");
-    taskForm?.addEventListener("submit", addTask);
+
+    const fbData = {
+      "200": {
+        date: "2022-04-22",
+        description: "Some task",
+        id: 200,
+        status: "in progress",
+        title: "taskFromBase",
+      } as TaskType,
+    };
+    const spyGetTask = jest
+      .spyOn(Crud.prototype, "updateData")
+      .mockResolvedValue("updateData");
+    const expectedTask = [
+      {
+        date: "2022-04-22",
+        description: "Some task",
+        id: 200,
+        status: "in progress",
+        title: "taskFromBase",
+      },
+    ];
 
     updateTask(123);
 
     expect(spyGetState).toHaveBeenCalledTimes(1);
-
-
-    // taskForm.dispatchEvent(new Event("submit"));
-    // await sleep(50)
-    // expect(spyReducers).lastCalledWith(expextReducerArg);
-    // expect(spyDispatch).lastCalledWith({ payload: expextReducerArg, type: "upDateTask" });
-    // expect(Crud).toHaveBeenCalledTimes(1);
+    const taskForm = <HTMLFormElement>document.querySelector("form");
+    taskForm?.addEventListener("submit", addTask);
+    taskForm.dispatchEvent(new Event("submit"));
+    await sleep(50)
+    expect(spyReducers).lastCalledWith(expextReducerArg);
+    expect(spyDispatch).lastCalledWith({ payload: expextReducerArg, type: "upDateTask" });
+    expect(Crud).toHaveBeenCalledTimes(1);
 
     spyReducers.mockClear();
   });
   it("test tugleStatusTask function Crud", () => {
-    const expextReducerArg = { "date": "2022-04-21", "description": "taskInput", "id": 123, "status": "in progress", "title": "titleInput" } as TaskType;
+    const expextReducerArg = {
+      date: "2022-04-21",
+      description: "taskInput",
+      id: 123,
+      status: "in progress",
+      title: "titleInput",
+    } as TaskType;
     const spyReducers = jest
       .spyOn(reducers.taskSlice.actions, "upDateTask")
       .mockReturnValue({ payload: expextReducerArg, type: "upDateTask" });
 
     tugleStatusTask(123);
-    expect(spyDispatch).lastCalledWith({ payload: expextReducerArg, type: "upDateTask" });
+    expect(spyDispatch).lastCalledWith({
+      payload: expextReducerArg,
+      type: "upDateTask",
+    });
     expect(spyReducers).lastCalledWith({ status: "done" });
     expect(Crud).toHaveBeenCalledTimes(1);
     spyReducers.mockClear();

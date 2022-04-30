@@ -1,4 +1,8 @@
-export function taskRender(data) {
+import { TaskType } from "../../types/taskType";
+
+interface TasksAcc { [rightD: number]: { done: string[], progress: string[] } };
+
+export function taskRender(data: TaskType[]) {
   const year = (<HTMLInputElement>document.querySelector("#calendarCont input"))
     .value;
   const month = parseFloat(
@@ -10,7 +14,7 @@ export function taskRender(data) {
   const lastDay = new Date(+year, month + 1, 0).getDate(); // крайний день месяца (число (31,30...))
   const lastDayFull = new Date(+year, month, lastDay); // полная дата последнего дня месяца
   const firstDayFull = new Date(+year, month, 1); // полная дата первого дня месяца
-  const tasksAcc = {};
+  const tasksAcc = {} as TasksAcc;
   data.forEach((task) => {
     const rightDateType = new Date(task.date.replace(/-/g, ","));
     const rightM = rightDateType.getMonth();
@@ -51,15 +55,10 @@ export function taskRender(data) {
       const redListInner = tasksAcc[`${curDay}`].progress
         ? tasksAcc[`${curDay}`].progress.map((el) => `<li>${el}</li>`).join(" ")
         : null;
-      date.innerHTML = `<div data-id="${curDay}" class="taskInDate"><div class="dateInCell">${curDay}</div>${
-        greenListInner !== null
-          ? `<div class ='greenList'></div><div class='greenListTasks'><ol>${greenListInner}</ol></div>`
-          : ""
-      }${
-        redListInner !== null
+      date.innerHTML = `<div data-id="${curDay}" class="taskInDate"><div class="dateInCell">${curDay}</div>${greenListInner !== null
+        ? `<div class ='greenList'></div><div class='greenListTasks'><ol>${greenListInner}</ol></div>`
+        : ""
+        }${redListInner !== null
           ? `<div class ='redList'></div><div class='redListTasks'><ol>${redListInner}</ol></div>`
           : ""
-      }</div>`;
-    }
-  });
-}
+        }</div>`;
