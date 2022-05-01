@@ -560,6 +560,7 @@ td {
 }
 
 .gg-calendar-dates {
+  margin-bottom: 5px;
   box-sizing: border-box;
   display: block;
   transform: scale(var(--ggs, 1));
