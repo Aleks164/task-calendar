@@ -66,8 +66,8 @@ html {
   width: 100%;
   line-height: 1.2em;
   text-align: center;
-  height: 60vh;
-  min-height: 410px;
+  /* height: 60vh; */
+  /* min-height: 410px; */
 }
 
 .redListTasks ol,
@@ -444,8 +444,8 @@ a.aAbout:active {
 }
 
 td {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 60px;
 }
 
 .greenList:hover .greenListTasks {
@@ -468,6 +468,7 @@ td {
   position: relative;
   width: 80px;
   height: 80px;
+  color: #139f3d;
 }
 
 .lds-roller div {
