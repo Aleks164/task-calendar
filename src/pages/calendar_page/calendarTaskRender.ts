@@ -72,11 +72,17 @@ export function calendarTaskRender(data: TaskType[]) {
           : null;
         date.innerHTML = `<div data-id="${curDay}" class="taskInDate"><div class="dateInCell">${curDay}</div>${
           greenListInner !== null
-            ? `<div class ='greenList'></div><div class='greenListTasks'><ol>${greenListInner}</ol></div>`
+            ? `<div class="greenList">
+            <div class="gg-calendar-dates"></div>
+            <div class="greenListTasks">
+                <ol>${greenListInner}</ol></div></div>`
             : ""
         }${
           redListInner !== null
-            ? `<div class ='redList'></div><div class='redListTasks'><ol>${redListInner}</ol></div>`
+            ? `<div class="redList">
+            <div class="gg-calendar-dates"></div>
+            <div class="redListTasks">
+                <ol>${redListInner}</ol></div></div>`
             : ""
         }</div>`;
       }

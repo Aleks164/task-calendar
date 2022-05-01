@@ -8,17 +8,6 @@ html {
   padding: 0 calc(20px - (100vw - 100%)) 0 0;
 }
 
-.aboutPicture {
-  float: left;
-  background-image: url("images/leo.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 150px;
-  height: 175px;
-  display: inline-block;
-}
-
 #onlyToday {
   width: max-content;
   position: absolute;
@@ -78,78 +67,7 @@ html {
   line-height: 1.2em;
   text-align: center;
   height: 60vh;
-}
-
-.dateInCell {
-  padding-left: 25%;
-  text-align: left;
-}
-
-.greenList,
-.redList {
-  position: absolute;
-  height: 5vh;
-  z-index: 5;
-  width: 30%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  right: 15%;
-}
-
-.greenList {
-  background-image: url("images/greenList.png");
-  top: 5%;
-}
-
-.redList {
-  background-image: url("images/redList.png");
-  bottom: 2%;
-}
-
-.greenListTasks {
-  font-size: 3vh;
-  position: absolute;
-  right: 5vw;
-  top: 0;
-  display: none;
-  border-top: 10px;
-  border-top-style: none;
-  border-top-color: currentcolor;
-  z-index: 5;
-  padding-right: 15px;
-  border-top-style: inset;
-  border-right-style: dashed;
-  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
-  animation-duration: 1s;
-  animation-name: slidein;
-  background-color: rgb(174 255 174);
-  border-top-color: rgb(126 181 126);
-  box-shadow: -8px 8px 5px rgb(128 161 103);
-  width: 30vw;
-  padding-left: 15px;
-  word-wrap: break-word;
-}
-
-.redListTasks {
-  word-wrap: break-word;
-  padding-left: 15px;
-  width: 30vw;
-  font-size: 3vh;
-  position: absolute;
-  display: none;
-  right: 5vw;
-  top: 8vh;
-  z-index: 5;
-  padding-right: 15px;
-  border-top: 10px;
-  border-top-style: inset;
-  border-right-style: dashed;
-  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
-  animation-duration: 1s;
-  animation-name: slidein;
-  background-color: rgb(255 191 191);
-  border-top-color: rgb(243 39 58);
-  box-shadow: -8px 8px 5px rgb(161 103 103);
+  min-height: 410px;
 }
 
 .redListTasks ol,
@@ -173,15 +91,14 @@ html {
 }
 
 #inputLine {
-  width: 220px;
+  width: 230px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 15px;
 }
 
 #inputLine select {
-  font-size: 2vh;
-  height: 3vh;
+  font-size: 16px;
   width: 110px;
   text-align: left;
   box-shadow: -2px 3px 5px 1px rgb(131 233 249);
@@ -198,8 +115,7 @@ html {
 
 #inputLine input {
   text-align: end;
-  font-size: 2vh;
-  height: 3vh;
+  font-size: 16px;
   width: 100px;
 }
 
@@ -522,60 +438,19 @@ a.aAbout:active {
     inset rgb(255 255 255 / 90%) 0 0 1px 3px;
 }
 
-.redList:hover + .redListTasks {
+.redList:hover .redListTasks {
   display: block;
   z-index: 10;
 }
 
-.greenList:hover + .greenListTasks {
+td {
+  width: 45px;
+  height: 45px;
+}
+
+.greenList:hover .greenListTasks {
   display: block;
   z-index: 10;
-}
-
-tbody td:nth-child(-n + 5) .greenListTasks {
-  font-size: 3vh;
-  position: absolute;
-  right: -33vw;
-  top: -3vh;
-  display: none;
-  border-top: 10px;
-  border-top-style: none;
-  border-top-color: currentcolor;
-  z-index: 5;
-  padding-right: 15px;
-  border-top-style: inset;
-  border-right-style: dashed;
-  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
-  animation-duration: 1s;
-  animation-name: slidein;
-  background-color: rgb(174 255 174);
-  border-top-color: rgb(126 181 126);
-  box-shadow: -8px 8px 5px rgb(128 161 103);
-  width: 30vw;
-  padding-left: 15px;
-  word-wrap: break-word;
-}
-
-tbody td:nth-child(-n + 5) .redListTasks {
-  word-wrap: break-word;
-  padding-left: 15px;
-  width: 30vw;
-  font-size: 3vh;
-  position: absolute;
-  display: none;
-  right: -33vw;
-  top: 3vh;
-  z-index: 5;
-  padding-right: 15px;
-  border-top: 10px;
-  border-top-style: inset;
-  border-right-style: dashed;
-  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
-  animation-duration: 1s;
-  animation-name: slidein;
-  background-color: rgb(255 191 191);
-  border-top-color: rgb(243 39 58);
-  box-shadow: -8px 8px 5px rgb(161 103 103);
 }
 
 .pLink > div {
@@ -681,6 +556,147 @@ tbody td:nth-child(-n + 5) .redListTasks {
 .lds-roller div:nth-child(8):after {
   top: 56px;
   left: 12px;
+}
+
+.gg-calendar-dates {
+  box-sizing: border-box;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 25px;
+  height: 25px;
+  border: 2px solid;
+  border-radius: 3px;
+  position: relative;
+}
+
+.gg-calendar-dates::after,
+.gg-calendar-dates::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  border-radius: 3px;
+  height: 2px;
+  left: 2px;
+}
+
+.gg-calendar-dates::before {
+  background: currentColor;
+  width: 7px;
+  box-shadow: 4px 0 0, 8px 0 0, 0 4px 0, 4px 4px 0, 8px 4px 0;
+  top: 9px;
+}
+
+.gg-calendar-dates::after {
+  width: 10px;
+  top: -4px;
+  box-shadow: 0 6px 0 0;
+}
+
+.aboutPicture {
+  float: left;
+  background-image: url("images/leo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 150px;
+  height: 175px;
+  display: inline-block;
+}
+
+.taskInDate {
+  display: grid;
+  grid-template-columns: 60% auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "data grenList"
+    "data redList";
+  position: relative;
+}
+
+.dateInCell {
+  grid-area: data;
+  place-self: center;
+}
+
+.greenList {
+  grid-area: grenList;
+  position: relative;
+  color: rgb(17, 181, 8);
+}
+
+.redList {
+  grid-area: redList;
+  position: relative;
+  color: rgb(180, 30, 7);
+}
+
+.greenListTasks {
+  position: absolute;
+  color: #139f3d;
+}
+
+.redListTasks {
+  position: absolute;
+  color: red;
+}
+
+.greenListTasks,
+.redListTasks {
+  max-width: 25vw;
+  font-size: 18px;
+  display: none;
+  border-top: 10px;
+  border-top-style: none;
+  border-top-color: currentcolor;
+  z-index: 5;
+  padding-right: 15px;
+  border-top-style: inset;
+  border-right-style: dashed;
+  border-radius: 42px 0 83px 59px / 41px 0 91px 57px;
+  animation-duration: 1s;
+  animation-name: slidein;
+  width: max-content;
+  padding-left: 15px;
+  word-wrap: break-word;
+}
+
+.greenListTasks {
+  right: 4vw;
+  top: 0px;
+  background-color: rgb(174 255 174);
+  border-top-color: rgb(126 181 126);
+  box-shadow: -8px 8px 5px rgb(128 161 103);
+}
+
+.redListTasks {
+  right: 4vw;
+  top: 0px;
+  background-color: rgb(255 191 191);
+  border-top-color: rgb(243 39 58);
+  box-shadow: -8px 8px 5px rgb(161 103 103);
+}
+
+tbody td:nth-child(-n + 5) .greenListTasks {
+  left: 25px;
+  top: 0;
+  border-radius: 0px 82px 87px 136px / 0px 182px 83px 118px;
+  animation-duration: 1s;
+  animation-name: slidein;
+  box-shadow: 8px 7px 5px rgb(128 161 103);
+  border-left-style: dashed;
+  border-right-style: none;
+}
+
+tbody td:nth-child(-n + 5) .redListTasks {
+  left: 25px;
+  top: 0;
+  border-radius: 0px 82px 87px 136px / 0px 182px 83px 118px;
+  animation-duration: 1s;
+  animation-name: slidein;
+  box-shadow: 8px 7px 5px rgb(161 103 103);
+  border-left-style: dashed;
+  border-right-style: none;
 }
 
 @keyframes lds-roller {

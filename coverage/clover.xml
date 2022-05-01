@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1651356803269" clover="3.2.0">
-  <project timestamp="1651356803269" name="All files">
+<coverage generated="1651430765915" clover="3.2.0">
+  <project timestamp="1651430765916" name="All files">
     <metrics statements="337" coveredstatements="289" conditionals="192" coveredconditionals="143" methods="84" coveredmethods="68" elements="613" coveredelements="500" complexity="0" loc="337" ncloc="337" packages="7" files="15" classes="15"/>
     <package name="firebase_init">
       <metrics statements="15" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="12" coveredmethods="8"/>
@@ -252,22 +252,22 @@
         <line num="12" count="1" type="stmt"/>
         <line num="14" count="3" type="stmt"/>
         <line num="15" count="3" type="stmt"/>
-        <line num="17" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="32" count="3" type="stmt"/>
-        <line num="33" count="4" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="38" count="3" type="stmt"/>
-        <line num="39" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="45" count="3" type="stmt"/>
-        <line num="46" count="4" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
+        <line num="44" count="4" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="51" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="52" count="0" type="stmt"/>
+        <line num="50" count="3" type="stmt"/>
+        <line num="51" count="4" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="56" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="57" count="0" type="stmt"/>
       </file>
       <file name="paramLinkCompiler.ts" path="C:\Otus_pract\Calendar\src\pages\tasks_page\paramLinkCompiler.ts">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>

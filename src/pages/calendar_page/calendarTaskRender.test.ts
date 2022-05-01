@@ -69,11 +69,11 @@ describe("taskRender test", () => {
       const calendarInner = calendarField.innerHTML;
       expect(calendarInner).toMatch('<td data-day="18" class="today">18</td>');
       expect(calendarInner).toMatch('<td data-day="30">30</td>');
-      expect(calendarInner).toMatch(
-        '<td data-day="13"><div data-id="13" class="taskInDate"><div class="dateInCell">13</div><div class="greenList"></div><div class="greenListTasks"><ol><li>test title2</li></ol></div></div></td>'
+      expect(calendarInner.trim()).toMatch(
+        '<td data-day="13"><div data-id="13" class="taskInDate"><div class="dateInCell">13'
       );
-      expect(calendarInner).toMatch(
-        '<td data-day="12"><div data-id="12" class="taskInDate"><div class="dateInCell">12</div><div class="redList"></div><div class="redListTasks"><ol><li>test title1</li></ol></div></div></td>'
+      expect(calendarInner.trim()).toMatch(
+        '<td data-day="12"><div data-id="12" class="taskInDate"><div class="dateInCell">12'
       );
     }
   });
