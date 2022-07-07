@@ -1,0 +1,82 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "task-calendar",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack build --node-env production",
+    "dev": "webpack serve --open --node-env development",
+    "test": "jest --coverage",
+    "lint": "prettier --check . && eslint . --ext .js,.ts && tsc --noEmit && stylelint \"**/*.css\"",
+    "lint:fix": "prettier --write . && eslint . --fix --ext .js,.ts && stylelint \"**/*.css\" --fix",
+    "tsc": "npx tsc --noEmit",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aleks164/task-calendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aleks164/task-calendar/issues"
+  },
+  "homepage": "https://github.com/Aleks164/task-calendar#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/fuzzy-search": "^2.1.2",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.21",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.14",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "babel-jest": "^27.5.1",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.6.0",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "gh-pages": "^3.2.3",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.3.7",
+    "mini-css-extract-plugin": "^2.5.3",
+    "postcss-loader": "^6.2.1",
+    "prettier": "^2.5.1",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.6.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0",
+    "ts-loader": "^9.2.7",
+    "typescript": "^4.5.5",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "prettier --write",
+      "eslint --cache --fix --ext .js,.ts"
+    ],
+    "*.{css,md,yml,html}": "prettier --write",
+    "*.css": "stylelint --fix"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.0",
+    "firebase": "^9.6.10",
+    "fuzzy-search": "^3.2.1"
+  }
+}
